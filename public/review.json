@@ -1,0 +1,393 @@
+[
+  {
+    "id": 1,
+    "user": {
+      "name": "John Doe",
+      "email": "john@doe.com",
+      "avatar": "/images/users/1.jpg"
+    },
+    "rating": 5,
+    "description": "I am extremely satisfied with this product. It exceeded my expectations!",
+    "product": {
+      "category": "Art Prints",
+      "detail": "Beautiful artwork, vibrant colors, and excellent quality.",
+      "price": 99.99
+    },
+    "payment_method": "Credit Card",
+    "date": "2023-04-15"
+  },
+  {
+    "id": 2,
+    "user": {
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "avatar": "/images/users/2.jpg"
+    },
+    "rating": 4,
+    "description": "A good purchase, but it arrived a bit late.",
+    "product": {
+      "category": "Home Decor",
+      "detail": "Stylish home decor item that adds charm to any room.",
+      "price": 49.99
+    },
+    "payment_method": "PayPal",
+    "date": "2023-04-12"
+  },
+  {
+    "id": 3,
+    "user": {
+      "name": "David Brown",
+      "email": "david@example.com",
+      "avatar": "/images/users/3.jpg"
+    },
+    "rating": 5,
+    "description": "Fantastic product! Quick delivery and great customer service.",
+    "product": {
+      "category": "Jewelry Handcraft",
+      "detail": "Beautifully crafted handcrafted jewelry, unique and elegant.",
+      "price": 89.99
+    },
+    "payment_method": "Apple Pay",
+    "date": "2023-04-10"
+  },
+  {
+    "id": 4,
+    "user": {
+      "name": "Sarah Johnson",
+      "email": "sarah@example.com",
+      "avatar": "/images/users/4.jpg"
+    },
+    "rating": 3,
+    "description": "The product is okay, but it's a bit overpriced.",
+    "product": {
+      "category": "Textiles",
+      "detail": "Soft and comfortable textiles, but the price could be more competitive.",
+      "price": 39.99
+    },
+    "payment_method": "Credit Card",
+    "date": "2023-04-08"
+  },
+  {
+    "id": 5,
+    "user": {
+      "name": "Michael Wilson",
+      "email": "michael@example.com",
+      "avatar": "/images/users/5.jpg"
+    },
+    "rating": 4,
+    "description": "Great value for the price. I'm happy with my purchase.",
+    "product": {
+      "category": "Glasswork",
+      "detail": "Elegant glasswork, well-crafted and visually stunning.",
+      "price": 69.99
+    },
+    "payment_method": "PayPal",
+    "date": "2023-04-06"
+  },
+  {
+    "id": 6,
+    "user": {
+      "name": "Linda Davis",
+      "email": "linda@example.com",
+      "avatar": "/images/users/6.jpg"
+    },
+    "rating": 5,
+    "description": "Absolutely beautiful! The product exceeded my expectations.",
+    "product": {
+      "category": "Candles & Soaps",
+      "detail": "Fragrant and high-quality candles & soaps. Perfect for gifting.",
+      "price": 29.99
+    },
+    "payment_method": "Credit Card",
+    "date": "2023-04-04"
+  },
+  {
+    "id": 7,
+    "user": {
+      "name": "James Miller",
+      "email": "james@example.com",
+      "avatar": "/images/users/7.jpg"
+    },
+    "rating": 3,
+    "description": "Good product, but delivery took longer than expected.",
+    "product": {
+      "category": "Pottery Ceramics",
+      "detail": "Handcrafted pottery ceramics with a unique design.",
+      "price": 79.99
+    },
+    "payment_method": "Apple Pay",
+    "date": "2023-04-02"
+  },
+  {
+    "id": 8,
+    "user": {
+      "name": "Evelyn Davis",
+      "email": "evelyn@example.com",
+      "avatar": "/images/users/8.jpg"
+    },
+    "rating": 4,
+    "description": "Satisfied with the product. Would buy again.",
+    "product": {
+      "category": "Fashion Accessories",
+      "detail": "Stylish fashion accessories that add a touch of elegance.",
+      "price": 59.99
+    },
+    "payment_method": "Credit Card",
+    "date": "2023-03-31"
+  },
+  {
+    "id": 9,
+    "user": {
+      "name": "Richard Smith",
+      "email": "richard@example.com",
+      "avatar": "/images/users/9.jpg"
+    },
+    "rating": 5,
+    "description": "Highly recommended product. It's worth every penny.",
+    "product": {
+      "category": "Personal Care Products",
+      "detail": "Effective and premium personal care products.",
+      "price": 49.99
+    },
+    "payment_method": "PayPal",
+    "date": "2023-03-29"
+  },
+  {
+    "id": 10,
+    "user": {
+      "name": "Susan Johnson",
+      "email": "susan@example.com",
+      "avatar": "/images/users/10.jpg"
+    },
+    "rating": 4,
+    "description": "Nice product, but it could use more color options.",
+    "product": {
+      "category": "Home Decor",
+      "detail": "Adds a touch of elegance to home decor.",
+      "price": 34.99
+    },
+    "payment_method": "Credit Card",
+    "date": "2023-03-27"
+  },
+  {
+    "id": 11,
+    "user": {
+      "name": "Robert Wilson",
+      "email": "robert@example.com",
+      "avatar": "/images/users/11.jpg"
+    },
+    "rating": 5,
+    "description": "The product is excellent. I'm very pleased with my purchase.",
+    "product": {
+      "category": "Fashion Accessories",
+      "detail": "Stylish fashion accessories that complement any outfit.",
+      "price": 69.99
+    },
+    "payment_method": "Credit Card",
+    "date": "2023-03-25"
+  },
+  {
+    "id": 12,
+    "user": {
+      "name": "Nancy Miller",
+      "email": "nancy@example.com",
+      "avatar": "/images/users/12.jpg"
+    },
+    "rating": 4,
+    "description": "Overall, a good product. It's well-made and durable.",
+    "product": {
+      "category": "Glasswork",
+      "detail": "Beautiful glasswork that adds a touch of elegance to any room.",
+      "price": 79.99
+    },
+    "payment_method": "PayPal",
+    "date": "2023-03-23"
+  },
+  {
+    "id": 13,
+    "user": {
+      "name": "Karen Davis",
+      "email": "karen@example.com",
+      "avatar": "/images/users/13.jpg"
+    },
+    "rating": 5,
+    "description": "I'm in love with this product. It's a must-buy!",
+    "product": {
+      "category": "Jewelry Handcraft",
+      "detail": "Exquisite handcrafted jewelry with intricate designs.",
+      "price": 99.99
+    },
+    "payment_method": "Apple Pay",
+    "date": "2023-03-21"
+  },
+  {
+    "id": 14,
+    "user": {
+      "name": "Daniel Johnson",
+      "email": "daniel@example.com",
+      "avatar": "/images/users/14.jpg"
+    },
+    "rating": 3,
+    "description": "The product is decent, but I expected better quality.",
+    "product": {
+      "category": "Pottery Ceramics",
+      "detail": "Handmade pottery ceramics that showcase creativity.",
+      "price": 59.99
+    },
+    "payment_method": "Credit Card",
+    "date": "2023-03-19"
+  },
+  {
+    "id": 15,
+    "user": {
+      "name": "Donna Moore",
+      "email": "donna@example.com",
+      "avatar": "/images/users/15.jpg"
+    },
+    "rating": 4,
+    "description": "I'm satisfied with the product. It's a good deal for the price.",
+    "product": {
+      "category": "Textiles",
+      "detail": "Soft and cozy textiles that are perfect for home use.",
+      "price": 29.99
+    },
+    "payment_method": "PayPal",
+    "date": "2023-03-17"
+  },
+  {
+    "id": 16,
+    "user": {
+      "name": "Ronald Taylor",
+      "email": "ronald@example.com",
+      "avatar": "/images/users/16.jpg"
+    },
+    "rating": 5,
+    "description": "This product is amazing! I recommend it to everyone.",
+    "product": {
+      "category": "Candles & Soaps",
+      "detail": "Fragrant and high-quality candles and soaps for relaxation.",
+      "price": 39.99
+    },
+    "payment_method": "Credit Card",
+    "date": "2023-03-15"
+  },
+  {
+    "id": 17,
+    "user": {
+      "name": "Helen Clark",
+      "email": "helen@example.com",
+      "avatar": "/images/users/17.jpg"
+    },
+    "rating": 4,
+    "description": "The product is decent, but it's missing some features.",
+    "product": {
+      "category": "Home Decor",
+      "detail": "Stylish home decor that enhances the ambiance of any room.",
+      "price": 49.99
+    },
+    "payment_method": "Apple Pay",
+    "date": "2023-03-13"
+  },
+  {
+    "id": 18,
+    "user": {
+      "name": "Evelyn Davis",
+      "email": "evelyn@example.com",
+      "avatar": "/images/users/18.jpg"
+    },
+    "rating": 5,
+    "description": "I am thrilled with this product. It's everything I wanted.",
+    "product": {
+      "category": "Glasswork",
+      "detail": "Elegant glasswork that captures the essence of artistry.",
+      "price": 79.99
+    },
+    "payment_method": "Credit Card",
+    "date": "2023-03-11"
+  },
+  {
+    "id": 19,
+    "user": {
+      "name": "William Anderson",
+      "email": "william@example.com",
+      "avatar": "/images/users/19.jpg"
+    },
+    "rating": 4,
+    "description": "A good product with excellent value for money.",
+    "product": {
+      "category": "Fashion Accessories",
+      "detail": "Trendy fashion accessories that make a statement.",
+      "price": 69.99
+    },
+    "payment_method": "PayPal",
+    "date": "2023-03-09"
+  },
+  {
+    "id": 20,
+    "user": {
+      "name": "Margaret White",
+      "email": "margaret@example.com",
+      "avatar": "/images/users/20.jpg"
+    },
+    "rating": 5,
+    "description": "This product exceeded my expectations. A must-buy!",
+    "product": {
+      "category": "Art Prints",
+      "detail": "Elegant art prints that add sophistication to your decor.",
+      "price": 89.99
+    },
+    "payment_method": "Credit Card",
+    "date": "2023-03-07"
+  },
+  {
+    "id": 21,
+    "user": {
+      "name": "Charles Hall",
+      "email": "charles@example.com",
+      "avatar": "/images/users/21.jpg"
+    },
+    "rating": 3,
+    "description": "I expected more from this product. It's just okay.",
+    "product": {
+      "category": "Jewelry Handcraft",
+      "detail": "Handcrafted jewelry with intricate designs and fine craftsmanship.",
+      "price": 99.99
+    },
+    "payment_method": "Apple Pay",
+    "date": "2023-03-05"
+  },
+  {
+    "id": 22,
+    "user": {
+      "name": "Linda Turner",
+      "email": "linda@example.com",
+      "avatar": "/images/users/22.jpg"
+    },
+    "rating": 4,
+    "description": "A reliable and stylish product at a reasonable price.",
+    "product": {
+      "category": "Home Decor",
+      "detail": "Chic and stylish home decor to enhance your living space.",
+      "price": 34.99
+    },
+    "payment_method": "Credit Card",
+    "date": "2023-03-03"
+  },
+  {
+    "id": 23,
+    "user": {
+      "name": "Mark Scott",
+      "email": "mark@example.com",
+      "avatar": "/images/users/23.jpg"
+    },
+    "rating": 5,
+    "description": "An exceptional product. I couldn't be happier with my purchase.",
+    "product": {
+      "category": "Textiles",
+      "detail": "Luxurious and soft textiles that add comfort to your home.",
+      "price": 29.99
+    },
+    "payment_method": "PayPal",
+    "date": "2023-03-01"
+  }
+]

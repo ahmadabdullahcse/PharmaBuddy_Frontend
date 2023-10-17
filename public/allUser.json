@@ -1,0 +1,187 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@doe.com",
+    "address": "123 Shopper St, USA",
+    "img": "/images/users/1.jpg",
+    "role": "user"
+  },
+  {
+    "id": 2,
+    "name": "Alice Johnson",
+    "email": "alice@example.com",
+    "address": "456 Buyer Ln, USA",
+    "img": "/images/users/2.jpg",
+    "role": "user"
+  },
+  {
+    "id": 3,
+    "name": "Sarah Smith",
+    "email": "sarah@example.com",
+    "address": "789 Shopper Blvd, USA",
+    "img": "/images/users/3.jpg",
+    "role": "user"
+  },
+  {
+    "id": 4,
+    "name": "Michael Brown",
+    "email": "michael@example.com",
+    "address": "1010 Shopper Ave, USA",
+    "img": "/images/users/4.jpg",
+    "role": "user"
+  },
+  {
+    "id": 5,
+    "name": "Emily Wilson",
+    "email": "emily@example.com",
+    "address": "1212 Shopper Way, USA",
+    "img": "/images/users/5.jpg",
+    "role": "user"
+  },
+  {
+    "id": 6,
+    "name": "David Johnson",
+    "email": "david@example.com",
+    "address": "1414 Shopper Pl, USA",
+    "img": "/images/users/6.jpg",
+    "role": "user"
+  },
+  {
+    "id": 7,
+    "name": "Olivia Lee",
+    "email": "olivia@example.com",
+    "address": "1616 Shopper Cir, USA",
+    "img": "/images/users/7.jpg",
+    "role": "user"
+  },
+  {
+    "id": 8,
+    "name": "James Wilson",
+    "email": "james@example.com",
+    "address": "1818 Shopper Dr, USA",
+    "img": "/images/users/8.jpg",
+    "role": "user"
+  },
+  {
+    "id": 9,
+    "name": "Sophia Martinez",
+    "email": "sophia@example.com",
+    "address": "2020 Shopper Rd, USA",
+    "img": "/images/users/9.jpg",
+    "role": "user"
+  },
+  {
+    "id": 10,
+    "name": "Liam Davis",
+    "email": "liam@example.com",
+    "address": "2222 Shopper Ave, USA",
+    "img": "/images/users/10.jpg",
+    "role": "user"
+  },
+  {
+    "id": 11,
+    "name": "Ella Clark",
+    "email": "ella@example.com",
+    "address": "2323 Shopper Rd, USA",
+    "img": "/images/users/11.jpg",
+    "role": "user"
+  },
+  {
+    "id": 12,
+    "name": "William Smith",
+    "email": "william@example.com",
+    "address": "2424 Shopper Ave, USA",
+    "img": "/images/users/12.jpg",
+    "role": "user"
+  },
+  {
+    "id": 13,
+    "name": "Henry Johnson",
+    "email": "henry@example.com",
+    "address": "2525 Shopper Blvd, USA",
+    "img": "/images/users/13.jpg",
+    "role": "user"
+  },
+  {
+    "id": 14,
+    "name": "Olivia Williams",
+    "email": "olivia.w@example.com",
+    "address": "2626 Shopper Ln, USA",
+    "img": "/images/users/14.jpg",
+    "role": "user"
+  },
+  {
+    "id": 15,
+    "name": "Benjamin Davis",
+    "email": "benjamin@example.com",
+    "address": "2727 Shopper St, USA",
+    "img": "/images/users/15.jpg",
+    "role": "user"
+  },
+  {
+    "id": 16,
+    "name": "Sophia Miller",
+    "email": "sophia.m@example.com",
+    "address": "2828 Shopper Blvd, USA",
+    "img": "/images/users/16.jpg",
+    "role": "user"
+  },
+  {
+    "id": 17,
+    "name": "Liam Johnson",
+    "email": "liam.j@example.com",
+    "address": "2929 Shopper Way, USA",
+    "img": "/images/users/17.jpg",
+    "role": "user"
+  },
+  {
+    "id": 18,
+    "name": "Evelyn Davis",
+    "email": "evelyn@example.com",
+    "address": "3030 Shopper Pl, USA",
+    "img": "/images/users/18.jpg",
+    "role": "user"
+  },
+  {
+    "id": 19,
+    "name": "Lucas Smith",
+    "email": "lucas@example.com",
+    "address": "3131 Shopper Cir, USA",
+    "img": "/images/users/19.jpg",
+
+    "role": "user"
+  },
+  {
+    "id": 20,
+    "name": "Mia Johnson",
+    "email": "mia@example.com",
+    "address": "3232 Shopper Dr, USA",
+    "img": "/images/users/20.jpg",
+    "role": "user"
+  },
+  {
+    "id": 21,
+    "name": "Micheal Harry",
+    "email": "micheal1@yahoo.com",
+    "address": "123 Admin Street, Admin City",
+    "img": "../images/admin/1.jpg",
+    "role": "admin"
+  },
+  {
+    "id": 22,
+    "name": "Armstrong Xefer",
+    "email": "armstrong2@google.com",
+    "address": "456 Admin Avenue, Adminville",
+    "img": "../images/admin/2.jpg",
+    "role": "admin"
+  },
+  {
+    "id": 23,
+    "name": "Anna lady",
+    "email": "annalaad3@yahoo.com",
+    "address": "789 Admin Road, Admin Town",
+    "img": "../images/admin/3.jpg",
+    "role": "admin"
+  }
+]

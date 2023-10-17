@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Micheal Harry",
+    "email": "micheal1@yahoo.com",
+    "address": "123 Admin Street, Admin City",
+    "img": "../images/admin/1.jpg",
+    "role": "admin",
+    "password": "password123"
+  },
+  {
+    "id": 2,
+    "name": "Armstrong Xefer",
+    "email": "armstrong2@google.com",
+    "address": "456 Admin Avenue, Adminville",
+    "img": "../images/admin/2.jpg",
+    "role": "admin",
+    "password": "adminPass"
+  },
+  {
+    "id": 3,
+    "name": "Anna lady",
+    "email": "annalaad3@yahoo.com",
+    "address": "789 Admin Road, Admin Town",
+    "img": "../images/admin/3.jpg",
+    "role": "admin",
+    "password": "securePassword"
+  }
+]

@@ -1,0 +1,530 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@doe.com",
+    "address": "123 Shopper St, USA",
+    "img": "/images/users/1.jpg",
+    "phone": "880-1552487769",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD1",
+        "orderDate": "2023-03-15",
+        "items": [
+          {
+            "productId": 1,
+            "productName": "Art Prints",
+            "quantity": 1,
+            "price": 99.99
+          },
+          {
+            "productId": 4,
+            "productName": "Candles & Soaps",
+            "quantity": 1,
+            "price": 89.99
+          }
+        ]
+      }
+    ],
+    "status": "Delivered"
+  },
+  {
+    "id": 2,
+    "name": "Alice Johnson",
+    "email": "alice@example.com",
+    "address": "456 Buyer Ln, USA",
+    "img": "/images/users/2.jpg",
+    "phone": "880-1552487321",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD2",
+        "orderDate": "2023-03-16",
+        "items": [
+          {
+            "productId": 2,
+            "productName": "Art Prints",
+            "quantity": 1,
+            "price": 99.99
+          },
+          {
+            "productId": 5,
+            "productName": "Glasswork",
+            "quantity": 2,
+            "price": 49.99
+          }
+        ]
+      }
+    ],
+    "status": "Shipped"
+  },
+  {
+    "id": 3,
+    "name": "Sarah Smith",
+    "email": "sarah@example.com",
+    "address": "789 Shopper Blvd, USA",
+    "img": "/images/users/3.jpg",
+    "phone": "880-1552487643",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD3",
+        "orderDate": "2023-03-17",
+        "items": [
+          {
+            "productId": 3,
+            "productName": "Fashion Accessories",
+            "quantity": 1,
+            "price": 79.99
+          }
+        ]
+      }
+    ],
+    "status": "Delivered"
+  },
+  {
+    "id": 4,
+    "name": "Michael Brown",
+    "email": "michael@example.com",
+    "address": "1010 Shopper Ave, USA",
+    "img": "/images/users/4.jpg",
+    "phone": "880-1552487975",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD4",
+        "orderDate": "2023-03-18",
+        "items": [
+          {
+            "productId": 4,
+            "productName": "Candles & Soaps",
+            "quantity": 2,
+            "price": 89.99
+          },
+          {
+            "productId": 8,
+            "productName": "Pottery Ceramics",
+            "quantity": 1,
+            "price": 69.99
+          }
+        ]
+      }
+    ],
+    "status": "Delivered"
+  },
+  {
+    "id": 5,
+    "name": "Emily Wilson",
+    "email": "emily@example.com",
+    "address": "1212 Shopper Way, USA",
+    "img": "/images/users/5.jpg",
+    "phone": "880-1552487890",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD5",
+        "orderDate": "2023-03-19",
+        "items": [
+          {
+            "productId": 5,
+            "productName": "Glasswork",
+            "quantity": 1,
+            "price": 49.99
+          },
+          {
+            "productId": 9,
+            "productName": "Textiles",
+            "quantity": 3,
+            "price": 29.99
+          }
+        ]
+      }
+    ],
+    "status": "Shipped"
+  },
+  {
+    "id": 6,
+    "name": "David Johnson",
+    "email": "david@example.com",
+    "address": "1414 Shopper Pl, USA",
+    "img": "/images/users/6.jpg",
+    "phone": "880-1552488044",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD6",
+        "orderDate": "2023-03-20",
+        "items": [
+          {
+            "productId": 6,
+            "productName": "Jewelry Handcraft",
+            "quantity": 1,
+            "price": 69.99
+          }
+        ]
+      }
+    ],
+    "status": "Shipped"
+  },
+  {
+    "id": 7,
+    "name": "Olivia Lee",
+    "email": "olivia@example.com",
+    "address": "1616 Shopper Cir, USA",
+    "img": "/images/users/7.jpg",
+    "phone": "880-1552488212",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD7",
+        "orderDate": "2023-03-21",
+        "items": [
+          {
+            "productId": 7,
+            "productName": "Personal Care Products",
+            "quantity": 1,
+            "price": 59.99
+          },
+          {
+            "productId": 10,
+            "productName": "Textiles",
+            "quantity": 2,
+            "price": 29.99
+          }
+        ]
+      }
+    ],
+    "status": "In Transit"
+  },
+  {
+    "id": 8,
+    "name": "James Wilson",
+    "email": "james@example.com",
+    "address": "1818 Shopper Dr, USA",
+    "img": "/images/users/8.jpg",
+    "phone": "880-1552488381",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD8",
+        "orderDate": "2023-03-22",
+        "items": [
+          {
+            "productId": 8,
+            "productName": "Pottery Ceramics",
+            "quantity": 1,
+            "price": 69.99
+          }
+        ]
+      }
+    ],
+    "status": "In Transit"
+  },
+  {
+    "id": 9,
+    "name": "Sophia Martinez",
+    "email": "sophia@example.com",
+    "address": "2020 Shopper Rd, USA",
+    "img": "/images/users/9.jpg",
+    "phone": "880-1552488553",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD9",
+        "orderDate": "2023-03-23",
+        "items": [
+          {
+            "productId": 9,
+            "productName": "Textiles",
+            "quantity": 2,
+            "price": 29.99
+          }
+        ]
+      }
+    ],
+    "status": "Processing"
+  },
+  {
+    "id": 10,
+    "name": "Liam Davis",
+    "email": "liam@example.com",
+    "address": "2222 Shopper Ave, USA",
+    "img": "/images/users/10.jpg",
+    "phone": "880-1552488724",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD10",
+        "orderDate": "2023-03-24",
+        "items": [
+          {
+            "productId": 10,
+            "productName": "Textiles",
+            "quantity": 1,
+            "price": 29.99
+          }
+        ]
+      }
+    ],
+    "status": "Processing"
+  },
+  {
+    "id": 11,
+    "name": "Ella Clark",
+    "email": "ella@example.com",
+    "address": "2323 Shopper Rd, USA",
+    "img": "/images/users/11.jpg",
+    "phone": "880-1552488898",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD11",
+        "orderDate": "2023-03-25",
+        "items": [
+          {
+            "productId": 1,
+            "productName": "Art Prints",
+            "quantity": 1,
+            "price": 99.99
+          },
+          {
+            "productId": 6,
+            "productName": "Jewelry Handcraft",
+            "quantity": 1,
+            "price": 69.99
+          }
+        ]
+      }
+    ],
+    "status": "Delivered"
+  },
+  {
+    "id": 12,
+    "name": "William Smith",
+    "email": "william@example.com",
+    "address": "2424 Shopper Ave, USA",
+    "img": "/images/users/12.jpg",
+    "phone": "880-1552489067",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD12",
+        "orderDate": "2023-03-26",
+        "items": [
+          {
+            "productId": 2,
+            "productName": "Candles & Soaps",
+            "quantity": 1,
+            "price": 89.99
+          }
+        ]
+      }
+    ],
+    "status": "Shipped"
+  },
+  {
+    "id": 13,
+    "name": "Henry Johnson",
+    "email": "henry@example.com",
+    "address": "2525 Shopper Blvd, USA",
+    "img": "/images/users/13.jpg",
+    "phone": "880-1552489231",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD13",
+        "orderDate": "2023-03-27",
+        "items": [
+          {
+            "productId": 3,
+            "productName": "Fashion Accessories",
+            "quantity": 2,
+            "price": 79.99
+          }
+        ]
+      }
+    ],
+    "status": "Delivered"
+  },
+  {
+    "id": 14,
+    "name": "Olivia Williams",
+    "email": "olivia.w@example.com",
+    "address": "2626 Shopper Ln, USA",
+    "img": "/images/users/14.jpg",
+    "phone": "880-1552489400",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD14",
+        "orderDate": "2023-03-28",
+        "items": [
+          {
+            "productId": 4,
+            "productName": "Glasswork",
+            "quantity": 1,
+            "price": 49.99
+          },
+          {
+            "productId": 7,
+            "productName": "Personal Care Products",
+            "quantity": 3,
+            "price": 59.99
+          }
+        ]
+      }
+    ],
+    "status": "Shipped"
+  },
+  {
+    "id": 15,
+    "name": "Benjamin Davis",
+    "email": "benjamin@example.com",
+    "address": "2727 Shopper St, USA",
+    "img": "/images/users/15.jpg",
+    "phone": "880-1552489579",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD15",
+        "orderDate": "2023-03-29",
+        "items": [
+          {
+            "productId": 5,
+            "productName": "Jewelry Handcraft",
+            "quantity": 2,
+            "price": 69.99
+          }
+        ]
+      }
+    ],
+    "status": "Delivered"
+  },
+  {
+    "id": 16,
+    "name": "Sophia Miller",
+    "email": "sophia.m@example.com",
+    "address": "2828 Shopper Blvd, USA",
+    "img": "/images/users/16.jpg",
+    "phone": "880-1552489743",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD16",
+        "orderDate": "2023-03-30",
+        "items": [
+          {
+            "productId": 6,
+            "productName": "Personal Care Products",
+            "quantity": 1,
+            "price": 59.99
+          }
+        ]
+      }
+    ],
+    "status": "Processing"
+  },
+  {
+    "id": 17,
+    "name": "Liam Johnson",
+    "email": "liam.j@example.com",
+    "address": "2929 Shopper Way, USA",
+    "img": "/images/users/17.jpg",
+    "phone": "880-1552489910",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD17",
+        "orderDate": "2023-03-31",
+        "items": [
+          {
+            "productId": 7,
+            "productName": "Pottery Ceramics",
+            "quantity": 1,
+            "price": 69.99
+          }
+        ]
+      }
+    ],
+    "status": "Processing"
+  },
+  {
+    "id": 18,
+    "name": "Evelyn Davis",
+    "email": "evelyn@example.com",
+    "address": "3030 Shopper Pl, USA",
+    "img": "/images/users/18.jpg",
+    "phone": "880-1552490082",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD18",
+        "orderDate": "2023-04-01",
+        "items": [
+          {
+            "productId": 8,
+            "productName": "Art Prints",
+            "quantity": 1,
+            "price": 99.99
+          },
+          {
+            "productId": 9,
+            "productName": "Textiles",
+            "quantity": 2,
+            "price": 29.99
+          }
+        ]
+      }
+    ],
+    "status": "Shipped"
+  },
+  {
+    "id": 19,
+    "name": "Lucas Smith",
+    "email": "lucas@example.com",
+    "address": "3131 Shopper Cir, USA",
+    "img": "/images/users/19.jpg",
+    "phone": "880-1552490251",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD19",
+        "orderDate": "2023-04-02",
+        "items": [
+          {
+            "productId": 9,
+            "productName": "Fashion Accessories",
+            "quantity": 2,
+            "price": 79.99
+          }
+        ]
+      }
+    ],
+    "status": "Processing"
+  },
+  {
+    "id": 20,
+    "name": "Mia Johnson",
+    "email": "mia@example.com",
+    "address": "3232 Shopper Dr, USA",
+    "img": "/images/users/20.jpg",
+    "phone": "880-1552490422",
+    "role": "user",
+    "orders": [
+      {
+        "orderNumber": "ORD20",
+        "orderDate": "2023-04-03",
+        "items": [
+          {
+            "productId": 10,
+            "productName": "Pottery Ceramics",
+            "quantity": 1,
+            "price": 49.99
+          }
+        ]
+      }
+    ],
+    "status": "Delivered"
+  }
+]
