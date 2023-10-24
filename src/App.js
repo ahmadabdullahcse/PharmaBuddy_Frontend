@@ -34,14 +34,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/terms" element={<TermsAndConditions />} />
         <Route path="/feedback" element={<Feedback />} />
-        <Route
-          path="/adminDashboard"
-          element={
-            <RequireAuth requiredRole="admin">
-              <Dashboard />
-            </RequireAuth>
-          }
-        >
+        <Route path="/adminDashboard" element={<Dashboard />}>
           <Route index element={<AdminDashboard />}></Route>
           <Route path="addAdmin" element={<AddAdmin />}></Route>
           <Route path="addItem" element={<AddItems />}></Route>

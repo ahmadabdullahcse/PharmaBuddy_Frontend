@@ -9,14 +9,38 @@ const Feedback = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-    toast.success(`Thank you for your feedback ${data.name}`, {
-      position: toast.POSITION.TOP_CENTER,
-      onClose: () => {
-        reset();
-      },
-    });
+
+  const handleAddFeedback = async (data) => {
+    try {
+      const feedback = {
+        name: data.name,
+        email: data.email,
+        rating: data.rating, // This captures the selected rating value
+        comments: data.comments,
+      };
+
+      // Send feedback data to the server
+      fetch("http://localhost:5000/feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(feedback),
+      })
+        .then((res) => res.json())
+        .then((response) => {
+          console.log(response);
+          toast.success(`Thank you for your feedback, ${response.name}`, {
+            position: toast.POSITION.TOP_CENTER,
+            onClose: () => {
+              reset();
+            },
+          });
+        });
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to submit feedback");
+    }
   };
 
   return (
@@ -30,7 +54,10 @@ const Feedback = () => {
             Feedback Form
           </h1>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
+        <form
+          onSubmit={handleSubmit(handleAddFeedback)}
+          className="mt-8 space-y-6"
+        >
           <div>
             <label htmlFor="name" className="text-primary font-semibold">
               Name:
@@ -99,6 +126,12 @@ const Feedback = () => {
               name="rating"
               required
               className="mt-2 px-4 py-1 w-full border rounded-md"
+              {...register("rating", {
+                required: {
+                  value: true,
+                  message: "Rating is required",
+                },
+              })}
             >
               <option value="5">5 - Excellent</option>
               <option value="4">4 - Very Good</option>
@@ -106,6 +139,13 @@ const Feedback = () => {
               <option value="2">2 - Fair</option>
               <option value="1">1 - Poor</option>
             </select>
+            <label>
+              {errors.rating?.type === "required" && (
+                <span className="text-red-500 text-xs mt-1">
+                  {errors.rating.message}
+                </span>
+              )}
+            </label>
           </div>
           <div>
             <label htmlFor="comments" className="text-primary font-semibold">
@@ -117,13 +157,25 @@ const Feedback = () => {
               rows="4"
               className="mt-2 px-4 py-2 w-full border rounded-md"
               placeholder="Your Comments or Suggestions"
-              required
+              {...register("comments", {
+                required: {
+                  value: true,
+                  message: "Comments are required",
+                },
+              })}
             ></textarea>
+            <label>
+              {errors.comments?.type === "required" && (
+                <span className="text-red-500 text-xs mt-1">
+                  {errors.comments.message}
+                </span>
+              )}
+            </label>
           </div>
           <div>
             <button
               type="submit"
-              className="mt-4 px-4 py-2 w-full bg-primary hover:bg-secondary text-white font-semibold rounded-md"
+              className="mt-4 px-4 py-2 w-full bg-primary hover-bg-secondary text-white font-semibold rounded-md"
             >
               Submit
             </button>

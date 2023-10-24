@@ -14,6 +14,8 @@ const Items = () => {
         setProducts(data);
       });
   }, []);
+  console.log(products);
+
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const productsToDisplay = products.slice(startIndex, endIndex);
@@ -77,32 +79,39 @@ const Items = () => {
           <table id="myTable" className="table">
             <thead>
               <tr>
-                <th className="uppercase underline lg:text-lg text-primary lg:font-extrabold lg:pr-10 text-left">
-                  ID
+                <th className="uppercase underline lg:text-lg text-primary lg:font-bold text-left">
+                  Serial
                 </th>
-                <th className="uppercase underline text-lg text-primary font-extrabold pr-20 text-left">
+                <th className="uppercase underline text-lg text-primary font-bold  text-left">
                   Product title
                 </th>
-                <th className="uppercase underline text-lg text-primary font-extrabold pr-20 text-left">
+                <th className="uppercase underline text-lg text-primary font-bold  text-left">
                   category
                 </th>
-                <th className="uppercase underline text-lg text-primary font-extrabold pr-10 text-left">
+                <th className="uppercase underline text-lg text-primary font-bold  text-left">
                   price
                 </th>
-                <th className="uppercase underline text-lg text-primary font-extrabold pr-10 text-left">
+                <th className="uppercase underline text-lg text-primary font-bold  text-left">
                   quantity
                 </th>
-                <th className="uppercase underline text-lg text-primary font-extrabold pr-20 text-left">
-                  seller name
+                <th className="uppercase underline text-lg text-primary font-bold text-left">
+                  Image
                 </th>
-                <th className="uppercase underline text-lg text-primary font-extrabold pr-10 text-left">
+                <th className="uppercase underline text-lg text-primary font-bold  text-left">
+                  pharmacy Name
+                </th>
+                <th className="uppercase underline text-lg text-primary font-bold  text-left">
                   deliveryTime
                 </th>
               </tr>
             </thead>
             <tbody>
-              {productsToDisplay.map((product) => (
-                <ItemRow key={product.id} product={product}></ItemRow>
+              {productsToDisplay.map((product, index) => (
+                <ItemRow
+                  key={product.id}
+                  index={index}
+                  product={product}
+                ></ItemRow>
               ))}
             </tbody>
           </table>

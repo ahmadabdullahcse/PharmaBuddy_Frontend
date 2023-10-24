@@ -7,7 +7,7 @@ const Users = () => {
   const [itemsPerPage, setItemsPerPage] = useState(5);
 
   useEffect(() => {
-    fetch("/users.json")
+    fetch("http://localhost:5000/user")
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
@@ -102,24 +102,15 @@ const Users = () => {
                   email
                 </th>
                 <th className="uppercase underline text-lg text-primary font-extrabold text-left">
-                  address
-                </th>
-                <th className="uppercase underline text-lg text-primary font-extrabold text-left">
-                  phone
-                </th>
-                <th className="uppercase underline text-lg text-primary font-extrabold pr-20 text-left">
-                  orders
-                </th>
-                <th className="uppercase underline text-lg text-primary font-extrabold text-left">
-                  status
+                  img
                 </th>
               </tr>
             </thead>
-            {/* <tbody>
-              {usersToDisplay.map((user) => (
-                <UserRow key={user.id} user={user}></UserRow>
+            <tbody>
+              {usersToDisplay.map((user, index) => (
+                <UserRow key={user.id} index={index} user={user}></UserRow>
               ))}
-            </tbody> */}
+            </tbody>
           </table>
           <button className="btn btn-primary mt-16 btn-sm drawer-button lg:hidden">
             Slide to see

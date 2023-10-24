@@ -8,7 +8,7 @@ const ProductDetailPage = ({ details }) => {
     seller,
     shippingInfo,
     attributes,
-    images,
+    img,
     title,
     quantity,
     price,
@@ -32,7 +32,7 @@ const ProductDetailPage = ({ details }) => {
             <div className="grid lg:grid-cols-2">
               <div>
                 <figure>
-                  <img className="mx-auto" src={images} alt="product" />
+                  <img className="mx-auto" src={img} alt="product" />
                 </figure>
                 <h2 className="text-center text-2xl text-primary font-extrabold">
                   {title}

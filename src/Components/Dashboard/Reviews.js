@@ -7,7 +7,7 @@ const Reviews = () => {
   const [itemsPerPage, setItemsPerPage] = useState(5);
 
   useEffect(() => {
-    fetch("/review.json")
+    fetch("http://localhost:5000/feedback")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
@@ -60,30 +60,25 @@ const Reviews = () => {
                 Serial
               </th>
               <th className="uppercase underline text-lg text-primary font-extrabold text-left">
-                User
+                name
               </th>
               <th className="uppercase underline text-lg text-primary font-extrabold text-left">
-                Rating
+                email
               </th>
               <th className="uppercase underline text-lg text-primary font-extrabold text-left">
-                Description
+                rating
               </th>
               <th className="uppercase underline text-lg text-primary font-extrabold text-left">
-                Product
+                comment
               </th>
-              <th className="uppercase underline text-lg text-primary font-extrabold text-left">
-                Payment
-              </th>
-              <th className="uppercase underline text-lg text-primary font-extrabold text-left">
-                Date
-              </th>
+             
             </tr>
           </thead>
-          {/* <tbody>
-            {reviewsToDisplay.map((review) => (
-              <ReviewRow key={review.id} review={review} />
+           <tbody>
+            {reviewsToDisplay.map((review, index) => (
+              <ReviewRow key={review.id} index={index} review={review} />
             ))}
-          </tbody> */}
+          </tbody>
         </table>
         <button className="btn btn-primary mt-16 btn-sm drawer-button lg:hidden">
           Slide to see

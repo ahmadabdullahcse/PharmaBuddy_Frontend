@@ -15,46 +15,12 @@ const AddItems = () => {
     description: "",
     category: "",
     price: "",
-    currency: "BDT",
     quantity: "",
     images: "",
-    seller: {
-      name: "",
-      rating: "",
-    },
-    attributes: [
-      {
-        name: "",
-        value: "",
-      },
-    ],
-    shippingInfo: {
-      deliveryTime: "",
-      shippingCost: "",
-    },
+    seller: "",
+    deliveryTime: "",
+    pharmacyName: "",
   });
-
-  const handleAttributeChange = (index, field, value) => {
-    const updatedAttributes = [...item.attributes];
-    updatedAttributes[index][field] = value;
-    setItem({
-      ...item,
-      attributes: updatedAttributes,
-    });
-  };
-
-  const handleAddAttribute = () => {
-    setItem({
-      ...item,
-      attributes: [
-        ...item.attributes,
-        {
-          name: "",
-          value: "",
-        },
-      ],
-    });
-  };
 
   const handleAddMedicine = async (data) => {
     try {
@@ -84,6 +50,7 @@ const AddItems = () => {
           quantity: data.quantity,
           rating: data.rating,
           deliveryTime: data.deliveryTime,
+          pharmacyName: data.pharmacyName,
         };
 
         // Save medicine information to the database
@@ -93,20 +60,16 @@ const AddItems = () => {
             "content-type": "application/json",
           },
           body: JSON.stringify(medicine),
-        });
-
-        if (response.ok) {
-          const result = await response.json();
-          toast.success(`${data.title} added`);
-        } else {
-          throw new Error("Failed to save medicine");
-        }
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
       } else {
         throw new Error("Image upload failed");
       }
     } catch (error) {
       console.error(error);
-      toast.error("Failed to add medicine");
     }
   };
 
@@ -318,39 +281,25 @@ const AddItems = () => {
                   {...register("deliveryTime")}
                 />
               </div>
-            </div>
-            <div className="form-control pt-5 w-full">
-              <div className="flex justify-between">
-                <h2 className="label-text text-primary font-bold text-md">
-                  Pharmacy
-                </h2>
-                <button
-                  type="button"
-                  onClick={handleAddAttribute}
-                  className="btn btn-sm text-xs w-1/6 uppercase border-accent text-accent font-bold bg-primary"
-                >
-                  Add Attribute
-                </button>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                {item.attributes.map((attribute, index) => (
-                  <div key={index} className="space-y-2">
-                    <label className="block">
-                      Pharmacy Name
-                      <input
-                        type="text"
-                        value={attribute.name}
-                        onChange={(e) =>
-                          handleAttributeChange(index, "name", e.target.value)
-                        }
-                        className="input input-sm input-bordered w-full"
-                      />
-                    </label>
-                  </div>
-                ))}
-              </div>
-            </div>
 
+              <div>
+                <div className="form-control w-full">
+                  {" "}
+                  <label className="label">
+                    <span className="label-text text-primary font-bold text-md">
+                      Pharmacy Name
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Pharmacy Name"
+                    name="pharmacyName"
+                    className="input input-sm input-bordered w-full"
+                    {...register("pharmacyName")}
+                  />
+                </div>
+              </div>
+            </div>
             <div className="flex mt-7 items-center justify-center">
               <button
                 type="submit"
