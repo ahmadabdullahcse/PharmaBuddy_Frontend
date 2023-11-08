@@ -51,16 +51,22 @@ const Navbar = () => {
       {/* customer dashboard for large screens (lg) */}
       <div className="hidden lg:flex">
         <Link
-          className="mx-3 font-extrabold normal-case text-base-100 hover:text-secondary text-md"
+          className="mx-3 font-bold normal-case text-base-100 hover:text-secondary text-md"
           to="/feedback"
         >
           FEEDBACK
         </Link>
         <Link
-          className="mx-3 font-extrabold normal-case text-base-100 hover:text-secondary text-md"
+          className="mx-3 font-bold normal-case text-base-100 hover:text-secondary text-md"
           to="/products"
         >
-          PRODUCTS
+          MEDICINES
+        </Link>
+        <Link
+          className="mx-3 font-bold normal-case text-base-100 hover:text-secondary text-md"
+          to="/pharmacy"
+        >
+          PHARMACY
         </Link>
       </div>
 

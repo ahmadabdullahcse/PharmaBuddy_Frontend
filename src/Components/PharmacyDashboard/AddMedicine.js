@@ -1,26 +1,20 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import image from "../../images/itemPg.png";
+import image from "../../images/medicine-bro.png";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
-const AddItems = () => {
+const AddMedicine = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const imageStorageKey = "ff702e3741c40ba98a1e3823b0fef1f3";
-  const [item, setItem] = useState({
-    id: "",
-    title: "",
-    description: "",
-    category: "",
-    price: "",
-    quantity: "",
-    images: "",
-    seller: "",
-    deliveryTime: "",
-    pharmacyName: "",
-  });
+
+  const [user] = useAuthState(auth);
+  const userInfo = user.email;
 
   const handleAddMedicine = async (data) => {
     try {
@@ -42,19 +36,18 @@ const AddItems = () => {
 
       if (imgData.success) {
         const medicine = {
-          title: data.title,
+          title: data.title, //medicine
           description: data.description,
           img: imgData.data.url,
-          category: data.category,
+          category: data.category, //genre
           price: data.price,
           quantity: data.quantity,
-          rating: data.rating,
-          deliveryTime: data.deliveryTime,
-          pharmacyName: data.pharmacyName,
+          userInfo,
         };
+        console.log(medicine);
 
         // Save medicine information to the database
-        const response = await fetch("http://localhost:5000/medicine", {
+        const response = await fetch("http://localhost:5000/addMedicine", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -64,6 +57,7 @@ const AddItems = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
+            reset();
           });
       } else {
         throw new Error("Image upload failed");
@@ -81,7 +75,7 @@ const AddItems = () => {
             style={{ fontFamily: "rockwell" }}
             className="text-center text-2xl text-primary font-extrabold"
           >
-            ADD <strong>Item</strong>
+            ADD <strong>MEDICINE</strong>
           </h1>
           <div className="grid lg:grid-cols-2 gap-5">
             <div>
@@ -92,7 +86,7 @@ const AddItems = () => {
                 <div className="form-control w-full">
                   <label className="label">
                     <span className="label-text text-primary font-bold text-md">
-                      Title
+                      Medicine
                     </span>
                   </label>
                   <input
@@ -144,7 +138,7 @@ const AddItems = () => {
                 <div className="form-control w-full">
                   <label className="label">
                     <span className="label-text text-primary font-bold text-md">
-                      Category
+                      Genre
                     </span>
                   </label>
                   <input
@@ -167,138 +161,88 @@ const AddItems = () => {
                     )}
                   </label>
                 </div>
-                <div className="grid lg:grid-cols-3 gap-5">
-                  <div className="form-control w-full">
-                    <label className="label">
-                      <span className="label-text text-primary font-bold text-md">
-                        Price
-                      </span>
-                    </label>
-                    <input
-                      type="number"
-                      placeholder="Product price"
-                      name="price"
-                      className="input input-sm input-bordered w-full"
-                      {...register("price", {
-                        required: {
-                          value: true,
-                          message: "price is required",
-                        },
-                      })}
-                    />
-                    <label>
-                      {errors.price?.type === "required" && (
-                        <span className="text-red-500 text-xs mt-1">
-                          {errors.price.message}
-                        </span>
-                      )}
-                    </label>
-                  </div>
-
-                  <div className="form-control w-full">
-                    <label className="label">
-                      <span className="label-text text-primary font-bold text-md">
-                        Quantity
-                      </span>
-                    </label>
-                    <input
-                      type="number"
-                      placeholder="Product quantity"
-                      name="quantity"
-                      className="input input-sm input-bordered w-full"
-                      {...register("quantity", {
-                        required: {
-                          value: true,
-                          message: "quantity is required",
-                        },
-                      })}
-                    />
-                    <label>
-                      {errors.quantity?.type === "required" && (
-                        <span className="text-red-500 text-xs mt-1">
-                          {errors.quantity.message}
-                        </span>
-                      )}
-                    </label>
-                  </div>
-                  {/* Image upload field */}
-                  <div className="form-control  w-full">
-                    <label className="label">
-                      <span className="label-text text-primary font-bold text-md">
-                        Image
-                      </span>
-                    </label>
-                    <input
-                      type="file"
-                      placeholder="Your image"
-                      name="image"
-                      className="input input-sm input-bordered w-full"
-                      {...register("image", {
-                        required: {
-                          value: true,
-                          message: "image is required",
-                        },
-                      })}
-                    />
-                    <label>
-                      {errors.image?.type === "required" && (
-                        <span className="text-red-500 text-xs mt-1">
-                          {errors.image.message}
-                        </span>
-                      )}
-                    </label>
-                  </div>
-                </div>
                 <div className="form-control w-full">
                   <label className="label">
                     <span className="label-text text-primary font-bold text-md">
-                      Seller Rating
-                    </span>
-                  </label>
-                  <select
-                    id="rating"
-                    name="rating"
-                    required
-                    className="px-4 py-1 w-full border rounded-md"
-                  >
-                    <option value="5">5 - Excellent</option>
-                    <option value="4">4 - Very Good</option>
-                    <option value="3">3 - Good</option>
-                    <option value="2">2 - Fair</option>
-                    <option value="1">1 - Poor</option>
-                  </select>
-                </div>
-                <div className="form-control w-full">
-                  <label className="label">
-                    <span className="label-text text-primary font-bold text-md">
-                      Delivery Time
+                      Price
                     </span>
                   </label>
                   <input
-                    type="text"
-                    placeholder="Delivery time"
-                    name="deliveryTime"
+                    type="number"
+                    placeholder="Product price"
+                    name="price"
                     className="input input-sm input-bordered w-full"
-                    {...register("deliveryTime")}
+                    {...register("price", {
+                      required: {
+                        value: true,
+                        message: "price is required",
+                      },
+                    })}
                   />
-                </div>
-                <div>
-                  <div className="form-control w-full">
-                    {" "}
-                    <label className="label">
-                      <span className="label-text text-primary font-bold text-md">
-                        Pharmacy Name
+                  <label>
+                    {errors.price?.type === "required" && (
+                      <span className="text-red-500 text-xs mt-1">
+                        {errors.price.message}
                       </span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Pharmacy Name"
-                      name="pharmacyName"
-                      className="input input-sm input-bordered w-full"
-                      {...register("pharmacyName")}
-                    />
-                  </div>
+                    )}
+                  </label>
                 </div>
+
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text text-primary font-bold text-md">
+                      Quantity
+                    </span>
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="Product quantity"
+                    name="quantity"
+                    className="input input-sm input-bordered w-full"
+                    {...register("quantity", {
+                      required: {
+                        value: true,
+                        message: "quantity is required",
+                      },
+                    })}
+                  />
+                  <label>
+                    {errors.quantity?.type === "required" && (
+                      <span className="text-red-500 text-xs mt-1">
+                        {errors.quantity.message}
+                      </span>
+                    )}
+                  </label>
+                </div>
+                {/* Image upload field */}
+                <div className="form-control  w-full">
+                  <label className="label">
+                    <span className="label-text text-primary font-bold text-md">
+                      Image
+                    </span>
+                  </label>
+                  <input
+                    type="file"
+                    placeholder="Your image"
+                    name="image"
+                    className="input input-sm input-bordered w-full"
+                    {...register("image", {
+                      required: {
+                        value: true,
+                        message: "image is required",
+                      },
+                    })}
+                  />
+                  <label>
+                    {errors.image?.type === "required" && (
+                      <span className="text-red-500 text-xs mt-1">
+                        {errors.image.message}
+                      </span>
+                    )}
+                  </label>
+                </div>
+
+                <div></div>
                 <div className="flex mt-7 items-center justify-center">
                   <button
                     type="submit"
@@ -316,4 +260,4 @@ const AddItems = () => {
   );
 };
 
-export default AddItems;
+export default AddMedicine;

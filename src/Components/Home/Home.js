@@ -10,7 +10,7 @@ import Footer from "../Shared/Footer";
 const Home = () => {
   return (
     <div>
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <Banner />
       <ProductCategories />
       <FeaturedProducts />

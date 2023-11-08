@@ -108,7 +108,7 @@ const Products = () => {
       </div>
 
       <Cart />
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <ProductDetailPage details={details} />
     </div>
   );

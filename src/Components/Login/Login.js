@@ -65,7 +65,7 @@ const Login = () => {
       );
     }
     const userRole = localStorage.getItem("userRole");
-    navigate(`/`);
+    navigate(`/${userRole}Dashboard`);
   };
 
   return (
@@ -143,6 +143,7 @@ const Login = () => {
                       >
                         <option value="customer">Customer</option>
                         <option value="admin">Admin</option>
+                        <option value="pharmacySignup">Pharmacy</option>
                       </select>
                       <label>
                         {errors.role?.type === "required" && (
@@ -224,10 +225,15 @@ const Login = () => {
                     />
                     <p className="text-center">
                       <small className="font-semibold">
-                        New to "Maker's Mosaic"?
+                        New to "Pharma-Buddy"?
                         <br />
+                        Create new account as{" "}
                         <Link className="text-primary" to="/signup">
-                          Create new account
+                          customer
+                        </Link>{" "}
+                        or{" "}
+                        <Link className="text-primary" to="/pharmacySignup">
+                          pharmacy
                         </Link>
                       </small>
                     </p>

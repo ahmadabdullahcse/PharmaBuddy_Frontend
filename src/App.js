@@ -24,6 +24,13 @@ import BookingHistory from "./Components/UserDashboard/BookingHistory";
 import NotificationsCenter from "./Components/UserDashboard/NotificationsCenter";
 import RequireAuth from "./Components/Login/RequireAuth";
 import TermsAndConditions from "./Components/Login/TermsAndConditions";
+import PharmacySignup from "./Components/Login/PharmacySignup";
+import PharmacyDashboard from "./Components/PharmacyDashboard/PharmacyDashboard";
+import AddMedicine from "./Components/PharmacyDashboard/AddMedicine";
+import MedicineList from "./Components/PharmacyDashboard/MedicineList";
+import Pharmacy from "./Components/Pharmacy/Pharmacy";
+import PharmacyMedicinePg from "./Components/Pharmacy/PharmacyMedicinePg";
+import PharmacyMedicineDetails from "./Components/Pharmacy/PharmacyMedicineDetails";
 
 function App() {
   return (
@@ -32,6 +39,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/pharmacy" element={<Pharmacy />} />
+        <Route path="/pharmacyMedicine" element={<PharmacyMedicinePg />} />
         <Route path="/terms" element={<TermsAndConditions />} />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/adminDashboard" element={<Dashboard />}>
@@ -41,6 +50,10 @@ function App() {
           <Route path="items" element={<Items />}></Route>
           <Route path="reviews" element={<Reviews />}></Route>
           <Route path="users" element={<Users />}></Route>
+        </Route>
+        <Route path="/pharmacySignupDashboard" element={<PharmacyDashboard />}>
+          <Route index element={<AddMedicine />}></Route>
+          <Route path="allMedicine" element={<MedicineList />}></Route>
         </Route>{" "}
         <Route
           path="/userDashboard"
@@ -57,6 +70,7 @@ function App() {
         <Route path="/order" element={<ProtectedRoute element={<Order />} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/pharmacySignup" element={<PharmacySignup />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <ToastContainer />
