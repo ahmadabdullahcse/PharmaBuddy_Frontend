@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import MedicineRow from "./MedicineRow";
+import { FaTrash } from "react-icons/fa";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const MedicineList = () => {
   const [page, setPage] = useState(1);
   const [products, setProducts] = useState([]);
-
+  const [user] = useAuthState(auth);
+  const [loggedUser, setLoggedUser] = useState([]);
   const itemsPerPage = 10;
 
   useEffect(() => {
@@ -14,6 +18,24 @@ const MedicineList = () => {
         setProducts(data);
       });
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      fetch(`http://localhost:5000/pharmacySignup?email=${user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.length > 0) {
+            const matchingUser = data.find(
+              (userData) => userData.email === user.email
+            );
+            if (matchingUser) {
+              setLoggedUser(matchingUser);
+            }
+          }
+        });
+    }
+  }, [user]);
+ console.log(loggedUser.email);
 
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -96,16 +118,21 @@ const MedicineList = () => {
                 <th className="uppercase underline text-lg text-primary font-bold text-left">
                   Image
                 </th>
+                <th className="uppercase underline text-lg text-primary font-bold  text-left">
+                  delete
+                </th>
               </tr>
             </thead>
             <tbody>
-              {productsToDisplay.map((product, index) => (
-                <MedicineRow
-                  key={product.id}
-                  index={index}
-                  product={product}
-                ></MedicineRow>
-              ))}
+              {productsToDisplay
+                .filter((product) => product.userInfo === loggedUser.email)
+                .map((product, index) => (
+                  <MedicineRow
+                    key={product._id}
+                    index={index}
+                    product={product}
+                  ></MedicineRow>
+                ))}
             </tbody>
           </table>
           <button className="btn btn-primary mt-16 btn-sm drawer-button lg:hidden">

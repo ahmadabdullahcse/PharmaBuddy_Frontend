@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import image from "../../images/medicine-bro.png";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -12,9 +12,8 @@ const AddMedicine = () => {
     formState: { errors },
   } = useForm();
   const imageStorageKey = "ff702e3741c40ba98a1e3823b0fef1f3";
-
   const [user] = useAuthState(auth);
-  const userInfo = user.email;
+  const userInfo = user?.email;
 
   const handleAddMedicine = async (data) => {
     try {
@@ -36,10 +35,10 @@ const AddMedicine = () => {
 
       if (imgData.success) {
         const medicine = {
-          title: data.title, //medicine
+          title: data.title,
           description: data.description,
           img: imgData.data.url,
-          category: data.category, //genre
+          category: data.category,
           price: data.price,
           quantity: data.quantity,
           userInfo,
@@ -47,18 +46,25 @@ const AddMedicine = () => {
         console.log(medicine);
 
         // Save medicine information to the database
-        const response = await fetch("http://localhost:5000/addMedicine", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(medicine),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            reset();
-          });
+        const addMedicineResponse = await fetch(
+          "http://localhost:5000/addMedicine",
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(medicine),
+          }
+        );
+
+        if (!addMedicineResponse.ok) {
+          throw new Error("Failed to add medicine");
+        }
+
+        const addMedicineData = await addMedicineResponse.json();
+        console.log(addMedicineData);
+
+        reset(); 
       } else {
         throw new Error("Image upload failed");
       }
@@ -68,8 +74,8 @@ const AddMedicine = () => {
   };
 
   return (
-    <div className="card bg-transparent border-2 shadow-md">
-      <div className="card bg-transparent border-4 shadow-md">
+    <div className="card bg-transparent">
+      <div className="card bg-transparent">
         <div className="card-body">
           <h1
             style={{ fontFamily: "rockwell" }}
@@ -241,8 +247,6 @@ const AddMedicine = () => {
                     )}
                   </label>
                 </div>
-
-                <div></div>
                 <div className="flex mt-7 items-center justify-center">
                   <button
                     type="submit"

@@ -55,7 +55,7 @@ const DashboardPg = () => {
           <ul className="menu p-4 w-80 min-h-full bg-accent text-base-content">
             <Link
               className="text-primary mx-8 text-lg my-6 font-bold hover:text-black "
-              to="/userDashboard"
+              to="/customerDashboard"
             >
               <span className="flex gap-4">
                 <img className="w-6 h-8" src={ban2} alt="" />
@@ -64,7 +64,7 @@ const DashboardPg = () => {
             </Link>
             <Link
               className="text-primary mx-8 text-lg mb-6 font-bold hover:text-black "
-              to="/userDashboard/booking"
+              to="/customerDashboard/booking"
             >
               <span className="flex gap-4">
                 <img className="w-6" src={ban1} alt="" />
@@ -73,7 +73,7 @@ const DashboardPg = () => {
             </Link>
             <Link
               className="text-primary mx-8 text-lg mb-6 font-bold hover:text-black "
-              to="/userDashboard/notifications"
+              to="/customerDashboard/notifications"
             >
               <span className="flex gap-4">
                 <img className="w-6" src={ban3} alt="" />

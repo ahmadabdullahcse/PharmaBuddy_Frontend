@@ -30,7 +30,6 @@ import AddMedicine from "./Components/PharmacyDashboard/AddMedicine";
 import MedicineList from "./Components/PharmacyDashboard/MedicineList";
 import Pharmacy from "./Components/Pharmacy/Pharmacy";
 import PharmacyMedicinePg from "./Components/Pharmacy/PharmacyMedicinePg";
-import PharmacyMedicineDetails from "./Components/Pharmacy/PharmacyMedicineDetails";
 
 function App() {
   return (
@@ -55,14 +54,7 @@ function App() {
           <Route index element={<AddMedicine />}></Route>
           <Route path="allMedicine" element={<MedicineList />}></Route>
         </Route>{" "}
-        <Route
-          path="/userDashboard"
-          element={
-            <RequireAuth requiredRole="user">
-              <DashboardPg />
-            </RequireAuth>
-          }
-        >
+        <Route path="/customerDashboard" element={<DashboardPg />}>
           <Route index element={<UserDashboard />}></Route>
           <Route path="booking" element={<BookingHistory />}></Route>
           <Route path="notifications" element={<NotificationsCenter />}></Route>

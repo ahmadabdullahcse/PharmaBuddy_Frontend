@@ -12,7 +12,7 @@ const UserDashboard = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`/users.json?email=${user.email}`)
+      fetch(`http://localhost:5000/customer?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.length > 0) {
@@ -28,18 +28,37 @@ const UserDashboard = () => {
   }, [user]);
   console.log(loggedUser);
 
-  const handleEditClick = () => {
-    setIsEditing(true);
-    setEditedUserData(loggedUser);
+  const handleSaveClick = () => {
+    // Create a new object with only the changed fields
+    const changedFields = {};
+    Object.keys(editedUserData).forEach((key) => {
+      if (editedUserData[key] !== loggedUser[key]) {
+        changedFields[key] = editedUserData[key];
+      }
+    });
+
+    fetch(`http://localhost:5000/updateUser/${loggedUser._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(changedFields),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        toast("User updated successfully", {
+          type: toast.TYPE.SUCCESS,
+        });
+        setIsEditing(false);
+      })
+      .catch((error) => {
+        console.error("Error updating user:", error);
+        toast.error("Error updating user");
+      });
   };
 
-  const handleSaveClick = () => {
-    setToastId(
-      toast("Updated", {
-        type: toast.TYPE.SUCCESS,
-      })
-    );
-    setIsEditing(false);
+  const handleEditClick = () => {
+    setIsEditing(true);
   };
 
   const handleCancelClick = () => {
@@ -47,10 +66,9 @@ const UserDashboard = () => {
     setEditedUserData(loggedUser);
   };
 
-  const handleSubmit = () => {
-    toast("Data saved successfully", {
-      type: toast.TYPE.SUCCESS,
-    });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSaveClick();
   };
 
   return (
@@ -126,50 +144,6 @@ const UserDashboard = () => {
         <div className="lg:max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6 mt-4">
           {/* Update Form */}
           <form onSubmit={handleSubmit}>
-            {/* name field */}
-            <div className="grid lg:grid-cols-2 gap-5">
-              <div className="form-control w-full">
-                <label className="label">
-                  <span className="label-text text-primary font-bold text-md">
-                    Name
-                  </span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  name="name"
-                  value={editedUserData.name}
-                  onChange={(e) =>
-                    setEditedUserData({
-                      ...editedUserData,
-                      name: e.target.value,
-                    })
-                  }
-                  className="input input-sm input-bordered w-full "
-                />
-              </div>
-              {/* email field */}
-              <div className="form-control w-full">
-                <label className="label">
-                  <span className="label-text text-primary font-bold text-md">
-                    Email
-                  </span>
-                </label>
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  name="email"
-                  value={editedUserData.email}
-                  onChange={(e) =>
-                    setEditedUserData({
-                      ...editedUserData,
-                      email: e.target.value,
-                    })
-                  }
-                  className="input input-sm input-bordered w-full "
-                />
-              </div>
-            </div>
             <div className="grid lg:grid-cols-2 gap-5">
               {/* Address */}
               <div className="form-control w-full">
@@ -214,24 +188,10 @@ const UserDashboard = () => {
                 />
               </div>
             </div>
-            {/* Image upload field */}
-            <div className="form-control  w-full">
-              <label className="label">
-                <span className="label-text text-primary font-bold text-md">
-                  Update your Image
-                </span>
-              </label>
-              <input
-                type="file"
-                placeholder="Your image"
-                name="image"
-                className="input input-sm input-bordered w-full"
-              />
-            </div>{" "}
             <div className="flex justify-center items-center">
               <input
                 className="btn btn-sm text-xs w-1/6 mt-5 border-secondary text-accent font-bold bg-primary"
-                value="LOGIN"
+                value="UPDATE"
                 type="submit"
               />
             </div>
