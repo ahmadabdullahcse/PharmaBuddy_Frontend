@@ -29,7 +29,7 @@ import PharmacyDashboard from "./Components/PharmacyDashboard/PharmacyDashboard"
 import AddMedicine from "./Components/PharmacyDashboard/AddMedicine";
 import MedicineList from "./Components/PharmacyDashboard/MedicineList";
 import Pharmacy from "./Components/Pharmacy/Pharmacy";
-import PharmacyMedicinePg from "./Components/Pharmacy/PharmacyMedicinePg";
+import PharmacyMedicineDetails from "./Components/Pharmacy/PharmacyMedicineDetails";
 
 function App() {
   return (
@@ -39,7 +39,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/pharmacy" element={<Pharmacy />} />
-        <Route path="/pharmacyMedicine" element={<PharmacyMedicinePg />} />
+        <Route
+          path="/pharmacyMedicineDetails/:pharmacyEmail"
+          element={<PharmacyMedicineDetails />}
+        />
+        <Route
+          path="/pharmacyMedicineDetails"
+          element={<PharmacyMedicineDetails />}
+        />
         <Route path="/terms" element={<TermsAndConditions />} />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/adminDashboard" element={<Dashboard />}>

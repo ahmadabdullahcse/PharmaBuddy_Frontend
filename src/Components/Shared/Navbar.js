@@ -33,18 +33,26 @@ const Navbar = () => {
       <div className="hidden lg:flex">
         {userRole === "admin" && (
           <Link
-            className="mx-3 font-extrabold normal-case text-base-100 hover-text-secondary text-md"
+            className="mx-3 font-bold normal-case text-base-100 hover-text-secondary text-md"
             to="/adminDashboard"
           >
             DASHBOARD
           </Link>
         )}
-        {userRole === "user" && (
+        {userRole === "customer" && (
           <Link
-            className="mx-3 font-extrabold normal-case text-base-100 hover-text-secondary text-md"
-            to="/userDashboard"
+            className="mx-3 font-bold normal-case text-base-100 hover-text-secondary text-md"
+            to="/customerDashboard"
           >
-            USER-DASHBOARD
+            DASHBOARD
+          </Link>
+        )}
+        {userRole === "pharmacySignup" && (
+          <Link
+            className="mx-3 font-bold normal-case text-base-100 hover-text-secondary text-md"
+            to="/pharmacySignupDashboardDashboard"
+          >
+            DASHBOARD
           </Link>
         )}
       </div>
@@ -110,9 +118,9 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            {userRole === "user" ? (
+            {userRole === "customer" ? (
               <Link
-                to="/userDashboard"
+                to="/customerDashboard"
                 className="text-base-100 font-bold hover:text-black"
               >
                 <div className="indicator">Profile</div>
@@ -125,6 +133,18 @@ const Navbar = () => {
             {userRole === "admin" ? (
               <Link
                 to="/adminDashboard"
+                className="text-base-100 font-bold hover:text-black"
+              >
+                <div className="indicator">Dashboard</div>
+              </Link>
+            ) : (
+              <></>
+            )}
+          </li>{" "}
+          <li>
+            {userRole === "pharmacySignup" ? (
+              <Link
+                to="/pharmacySignupDashboard"
                 className="text-base-100 font-bold hover:text-black"
               >
                 <div className="indicator">Dashboard</div>
@@ -152,7 +172,6 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* Avatar dropdown for large screens */}
       <div className="dropdown dropdown-end hidden md:block">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
@@ -164,21 +183,31 @@ const Navbar = () => {
           className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-primary rounded-box w-52"
         >
           <li>
-            {userRole === "user" ? (
+            {userRole === "customer" ? (
               <Link
-                to="/userDashboard"
+                to="/customerDashboard"
                 className="text-base-100 font-bold hover:text-black"
               >
-                <div className="indicator">Profile</div>
+                <div className="indicator">Dashboard</div>
               </Link>
             ) : (
               <></>
             )}
-          </li>
-          <li>
+
             {userRole === "admin" ? (
               <Link
                 to="/adminDashboard"
+                className="text-base-100 font-bold hover:text-black"
+              >
+                <div className="indicator">Dashboard</div>
+              </Link>
+            ) : (
+              <></>
+            )}
+
+            {userRole === "pharmacySignup" ? (
+              <Link
+                to="/pharmacySignupDashboard"
                 className="text-base-100 font-bold hover:text-black"
               >
                 <div className="indicator">Dashboard</div>

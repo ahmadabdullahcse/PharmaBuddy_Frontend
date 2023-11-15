@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
@@ -11,32 +15,94 @@ const AddAdmin = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const [createUserWithEmailAndPassword, loading, error] =
+  const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const navigate = useNavigate();
   let signInError;
 
+  const imageStorageKey = "81a2b36646ff008b714220192e61707d";
   const [admins, setAdmins] = useState([]);
+
   useEffect(() => {
-    fetch("/admin.json")
+    fetch("http://localhost:5000/admin")
       .then((res) => res.json())
       .then((data) => {
         setAdmins(data);
       });
   }, []);
-  if (loading) {
+  if (loading || updating) {
     return <Loading></Loading>;
   }
 
-  if (error) {
-    signInError = <p className="text-red-500 text-xs mt-1">{error?.message}</p>;
+  if (error || updateError) {
+    signInError = (
+      <p className="text-red-500 text-xs mt-1">
+        {error?.message || updateError?.message}
+      </p>
+    );
   }
 
   const handleAddAdmin = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
-    console.log(data);
-    navigate("/dashboard");
+    await updateProfile({
+      displayName: data.name,
+      email: data.email,
+      password: data.password,
+      dob: data.dob,
+    });
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgData) => {
+        if (imgData.success) {
+          const admin = {
+            name: data.name,
+            role: "admin",
+            email: data.email,
+            img: imgData.data.url,
+            password: data.password,
+          };
+          const user = {
+            name: data.name,
+            email: data.email,
+            role: "admin",
+            img: imgData.data.url,
+            password: data.password,
+          };
+          // save admin information to the database
+          fetch("http://localhost:5000/admin", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(admin),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              toast.success(`${data.name} added as ADMIN`);
+            });
+          fetch("http://localhost:5000/user", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(user),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              toast.success(`${data.name} welcome to Elite-Dwell-Assist`);
+            });
+          navigate("/adminDashboard");
+        }
+      });
   };
 
   return (
@@ -46,7 +112,7 @@ const AddAdmin = () => {
           <div className="card bg-transparent border-4 shadow-md">
             <div className="card-body">
               <h1
-                style={{ fontFamily: "rockwell" }}
+                style={{ fontFamily: "arial" }}
                 className="text-center text-2xl text-primary font-extrabold"
               >
                 ADD <strong>ADMIN</strong>
@@ -119,61 +185,32 @@ const AddAdmin = () => {
                     </label>
                   </div>
                 </div>
-                <div className="grid lg:grid-cols-2 pt-5 gap-3">
-                  {/* address field */}
-                  <div className="form-control w-full">
-                    <label className="label">
-                      <span className="label-text text-primary font-bold text-md">
-                        Address
+                {/* Image upload field */}
+                <div className="form-control  w-full">
+                  <label className="label">
+                    <span className="label-text text-primary font-bold text-md">
+                      Photo
+                    </span>
+                  </label>
+                  <input
+                    type="file"
+                    placeholder="Your image"
+                    name="image"
+                    className="input input-sm input-bordered w-full"
+                    {...register("image", {
+                      required: {
+                        value: true,
+                        message: "image is required",
+                      },
+                    })}
+                  />
+                  <label>
+                    {errors.image?.type === "required" && (
+                      <span className="text-red-500 text-xs mt-1">
+                        {errors.image.message}
                       </span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Your address"
-                      name="address"
-                      className="input input-sm input-bordered w-full"
-                      {...register("address", {
-                        required: {
-                          value: true,
-                          message: "address is required",
-                        },
-                      })}
-                    />
-                    <label>
-                      {errors.address?.type === "required" && (
-                        <span className="text-red-500 text-xs mt-1">
-                          {errors.address.message}
-                        </span>
-                      )}
-                    </label>
-                  </div>
-                  {/* Image upload field */}
-                  <div className="form-control  w-full">
-                    <label className="label">
-                      <span className="label-text text-primary font-bold text-md">
-                        photo
-                      </span>
-                    </label>
-                    <input
-                      type="file"
-                      placeholder="Your image"
-                      name="image"
-                      className="input input-sm input-bordered w-full"
-                      {...register("image", {
-                        required: {
-                          value: true,
-                          message: "image is required",
-                        },
-                      })}
-                    />
-                    <label>
-                      {errors.image?.type === "required" && (
-                        <span className="text-red-500 text-xs mt-1">
-                          {errors.image.message}
-                        </span>
-                      )}
-                    </label>
-                  </div>
+                    )}
+                  </label>
                 </div>
                 {/* Password field */}
                 <div className="form-control w-full pb-11">
@@ -214,7 +251,7 @@ const AddAdmin = () => {
                 {signInError}
                 <div className="flex items-center justify-center">
                   <input
-                    className="btn btn-sm text-xs w-1/3 uppercase border-accent text-white font-bold bg-primary"
+                    className="btn btn-sm text-xs w-1/3 uppercase border-blue-500 text-white font-bold bg-primary"
                     value="Create Admin"
                     type="submit"
                   />
@@ -223,30 +260,6 @@ const AddAdmin = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="lg:w-2/5 bg-accent shadow-lg h-screen p-4">
-        <h2 className="text-lg text-center text-primary font-bold">
-          Existing Admins
-        </h2>
-        <table className="table-auto mt-4 mx-auto">
-          <tbody>
-            {admins.map((admin) => (
-              <tr key={admin._id}>
-                <td className="border px-4 py-2">
-                  <span className="uppercase font-semibold">{admin.name}</span>
-                  <br /> {admin.email}
-                </td>
-                <td className="border px-4 py-2">
-                  <img
-                    src={admin.img}
-                    alt={admin.name}
-                    className="w-20 h-auto rounded-full"
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
     </div>
   );

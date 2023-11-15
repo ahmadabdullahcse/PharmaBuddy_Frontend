@@ -1,10 +1,10 @@
+// Pharmacy.js
 import React, { useEffect, useState } from "react";
 import PharmacyCard from "./PharmacyCard";
 import bro from "../../images/Questions-bro.png";
 
 const Pharmacy = () => {
   const [products, setProducts] = useState([]);
-  const [details, setDetails] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:5000/pharmacySignup")
@@ -13,6 +13,7 @@ const Pharmacy = () => {
         setProducts(data);
       });
   }, []);
+  console.log(products);
 
   return (
     <div>
@@ -29,11 +30,7 @@ const Pharmacy = () => {
         </div>
         <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-5 p-11">
           {products.map((product) => (
-            <PharmacyCard
-              key={product.id}
-              product={product}
-              setDetails={setDetails}
-            ></PharmacyCard>
+            <PharmacyCard key={product.id} product={product}></PharmacyCard>
           ))}
         </div>
       </div>
