@@ -21,6 +21,7 @@ const Cart = () => {
     navigate("/order");
   };
 
+  console.log(cartItems);
   return (
     <>
       <div
@@ -51,8 +52,8 @@ const Cart = () => {
           cartItems.map((product) => {
             return (
               <ItemCard
-                key={product.id}
-                id={product.id}
+                key={product._id}
+                id={product._id}
                 title={product.title}
                 price={product.price}
                 images={product.images}
@@ -83,10 +84,7 @@ const Cart = () => {
               Checkout
             </button>
           ) : (
-            <Link
-              to="/login"
-              className="text-extrabold underline text-red-600"
-            >
+            <Link to="/login" className="text-extrabold underline text-red-600">
               Login to further checkout
             </Link>
           )}

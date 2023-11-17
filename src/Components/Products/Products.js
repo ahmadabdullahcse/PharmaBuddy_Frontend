@@ -55,7 +55,6 @@ const Products = () => {
           onChange={handleItemsPerPageChange}
           className="p-2 border border-gray-400 rounded-lg outline-none"
         >
-          <option value={10}>10</option>
           <option value={20}>20</option>
           <option value={30}>30</option>
           <option value={60}>60</option>
@@ -77,7 +76,7 @@ const Products = () => {
           })
           .map((product) => (
             <ProductCard
-              key={product.id}
+              key={product._id}
               product={product}
               setDetails={setDetails}
             ></ProductCard>

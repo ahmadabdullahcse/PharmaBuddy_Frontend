@@ -28,12 +28,6 @@ const PharmacyCard = ({ product }) => {
           </div>
           <div className=" p-2 text-primary font-semibold ">
             <h2 className="text-xl text-center capitalize font-bold">{name}</h2>
-            <p>
-              <PharmacyMedicineDetails
-                key={product.id}
-                email={email}
-              ></PharmacyMedicineDetails>
-            </p>
           </div>
         </div>
       </div>

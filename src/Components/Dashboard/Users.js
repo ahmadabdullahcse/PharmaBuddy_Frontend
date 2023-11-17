@@ -108,7 +108,7 @@ const Users = () => {
             </thead>
             <tbody>
               {usersToDisplay.map((user, index) => (
-                <UserRow key={user.id} index={index} user={user}></UserRow>
+                <UserRow key={user._id} index={index} user={user}></UserRow>
               ))}
             </tbody>
           </table>

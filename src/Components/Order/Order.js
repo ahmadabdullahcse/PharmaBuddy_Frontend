@@ -63,7 +63,7 @@ const Order = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {selectedItems.map((item) => (
               <div
-                key={item.id}
+                key={item._id}
                 className="shadow-md p-3 w-52 h-64 mx-auto rounded-lg  bg-accent border-2 "
               >
                 <div className="w-1/2">

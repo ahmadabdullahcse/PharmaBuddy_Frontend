@@ -170,7 +170,7 @@ const AdminDashboard = () => {
           <h3 className="text-lg font-semibold text-gray-800">Feedback</h3>
           <div className="mt-4">
             {feedback.map((item) => (
-              <div key={item.id} className="border-b border-gray-200 py-2">
+              <div key={item._id} className="border-b border-gray-200 py-2">
                 <p className="text-gray-600 text-sm font-semibold">
                   {item.user}
                 </p>
@@ -185,7 +185,7 @@ const AdminDashboard = () => {
           <h3 className="text-lg font-semibold text-gray-800">Order Summary</h3>
           <div className="mt-4">
             {orders.map((order) => (
-              <div key={order.id} className="border-b border-gray-200 py-2">
+              <div key={order._id} className="border-b border-gray-200 py-2">
                 <p className="text-gray-600 text-sm font-semibold">
                   {order.user}
                 </p>

@@ -1,4 +1,3 @@
-// Pharmacy.js
 import React, { useEffect, useState } from "react";
 import PharmacyCard from "./PharmacyCard";
 import bro from "../../images/Questions-bro.png";
@@ -30,7 +29,7 @@ const Pharmacy = () => {
         </div>
         <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-5 p-11">
           {products.map((product) => (
-            <PharmacyCard key={product.id} product={product}></PharmacyCard>
+            <PharmacyCard key={product._id} product={product}></PharmacyCard>
           ))}
         </div>
       </div>

@@ -9,7 +9,7 @@ import {
 } from "../../redux/Slices/CartSlice";
 import { toast } from "react-toastify";
 
-const ItemCard = ({ id, images, title, price, qty }) => {
+const ItemCard = ({ _id, images, title, price, qty }) => {
   const dispatch = useDispatch();
   const notify = () => {
     toast.success(
@@ -26,7 +26,7 @@ const ItemCard = ({ id, images, title, price, qty }) => {
     <div className="flex gap-2 shadow-md rounded-lg h-20 p-4 mb-5 bg-accent border-secondary border-2">
       <MdDelete
         onClick={() => {
-          dispatch(removeFromCart({ id, images, title, price, qty }));
+          dispatch(removeFromCart({ _id, images, title, price, qty }));
           notify();
         }}
         className="absolute right-7 text-primary cursor-pointer"
@@ -35,18 +35,18 @@ const ItemCard = ({ id, images, title, price, qty }) => {
       <div className="leading-5">
         <h2 className="font-bold text-xs text-black">{title}</h2>
         <div className="flex justify-between ">
-          <span className="text-primary font-bold">₹{price}</span>
+          <span className="text-primary font-bold">${price}</span>
           <div className="flex justify-center items-center gap-2 absolute right-7">
             <AiOutlineMinus
               onClick={() =>
-                qty > 1 ? dispatch(decrementQty({ id })) : (qty = 0)
+                qty > 1 ? dispatch(decrementQty({ _id })) : (qty = 0)
               }
               className="border-2 border-primary text-primary mt-4 hover:text-accent hover:bg-primary hover:border-none rounded-md p-1 text-xl transition-all ease-linear cursor-pointer"
             />
             <span className="mt-4">{qty}</span>
             <AiOutlinePlus
               onClick={() =>
-                qty >= 1 ? dispatch(incrementQty({ id })) : (qty = 0)
+                qty >= 1 ? dispatch(incrementQty({ _id })) : (qty = 0)
               }
               className="border-2 border-primary text-primary mt-4 hover:text-accent hover:bg-primary hover:border-none rounded-md p-1 text-xl transition-all ease-linear cursor-pointer"
             />

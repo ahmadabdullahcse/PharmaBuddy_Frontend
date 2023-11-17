@@ -76,7 +76,7 @@ const Reviews = () => {
           </thead>
            <tbody>
             {reviewsToDisplay.map((review, index) => (
-              <ReviewRow key={review.id} index={index} review={review} />
+              <ReviewRow key={review._id} index={index} review={review} />
             ))}
           </tbody>
         </table>

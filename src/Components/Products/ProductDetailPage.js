@@ -4,7 +4,7 @@ import auth from "../../firebase.init";
 
 const ProductDetailPage = ({ details }) => {
   const {
-    id,
+    _id,
     seller,
     shippingInfo,
     attributes,
@@ -29,7 +29,7 @@ const ProductDetailPage = ({ details }) => {
             ✕
           </label>
           <div className="card bg-transparent">
-            <div className="grid lg:grid-cols-2">
+            <div className="grid lg:grid-cols-2 gap-5">
               <div>
                 <figure>
                   <img className="mx-auto" src={img} alt="product" />
@@ -97,14 +97,6 @@ const ProductDetailPage = ({ details }) => {
                 </ul>
               </div>
             </div>
-            {/* <div className="flex items-end justify-end">
-              <label
-                htmlFor="product-detail"
-                className="btn btn-sm text-white font-bold w-1/4 btn-primary"
-              >
-                OK
-              </label>
-            </div> */}
           </div>
         </div>
       </div>

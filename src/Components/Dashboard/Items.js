@@ -108,7 +108,7 @@ const Items = () => {
             <tbody>
               {productsToDisplay.map((product, index) => (
                 <ItemRow
-                  key={product.id}
+                  key={product._id}
                   index={index}
                   product={product}
                 ></ItemRow>

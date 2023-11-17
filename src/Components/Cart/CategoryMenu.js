@@ -14,7 +14,6 @@ const CategoryMenu = () => {
           ...new Set(data.map((product) => product.category)),
         ];
         setCategories(uniqueCategories);
-        // console.log(uniqueCategories);
       });
   }, []);
   const selectedCategory = useSelector((state) => state.category.category);
@@ -23,7 +22,6 @@ const CategoryMenu = () => {
       <h3 className="text-xl text-center text-primary mt-16 font-semibold">
         Find According to Category
       </h3>
-
       <div className="my-5 flex justify-center items-center gap-3 overflow-x-scroll scroll-smooth lg:overflow-x-hidden">
         <button
           onClick={() => dispatch(setCategory("All"))}
