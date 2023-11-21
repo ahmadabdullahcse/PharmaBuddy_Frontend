@@ -53,7 +53,7 @@ const Cart = () => {
             return (
               <ItemCard
                 key={product._id}
-                id={product._id}
+                _id={product._id}
                 title={product.title}
                 price={product.price}
                 images={product.images}

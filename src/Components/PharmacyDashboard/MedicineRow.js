@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
-import trash from "../../images/trash.svg";
+import out_of_stock from "../../images/out-of-stock.png";
 
 const MedicineRow = ({ product, index }) => {
+  const [isOutOfStock, setIsOutOfStock] = useState(false);
+
+  const handleOutOfStock = () => {
+    setIsOutOfStock(true);
+    toast.info("Medicine marked as out of stock");
+  };
+
   const deleteBooking = () => {
-    if (window.confirm("Are you sure you want to delete this booking?")) {
+    if (
+      !isOutOfStock &&
+      window.confirm("Are you sure you want to delete this booking?")
+    ) {
       fetch(`http://localhost:5000/addMedicine/${product._id}`, {
         method: "DELETE",
       })
@@ -21,8 +31,9 @@ const MedicineRow = ({ product, index }) => {
         });
     }
   };
+
   return (
-    <tr>
+    <tr style={{ opacity: isOutOfStock ? 0.5 : 1 }}>
       <td className="uppercase text-lg font-bold py-2 text-left">
         {index + 1}
       </td>
@@ -37,12 +48,14 @@ const MedicineRow = ({ product, index }) => {
         <img className="w-6" src={product?.img} alt="" />
       </td>
       <td>
-        <img
-          onClick={deleteBooking}
-          className="w-6 cursor-pointer"
-          src={trash}
-          alt=""
-        />
+        {!isOutOfStock && (
+          <img
+            onClick={handleOutOfStock}
+            className="w-10 cursor-pointer"
+            src={out_of_stock}
+            alt="Out of Stock"
+          />
+        )}
       </td>
     </tr>
   );

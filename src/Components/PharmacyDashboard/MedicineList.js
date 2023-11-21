@@ -35,7 +35,7 @@ const MedicineList = () => {
         });
     }
   }, [user]);
- console.log(loggedUser.email);
+  console.log(loggedUser.email);
 
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -119,7 +119,7 @@ const MedicineList = () => {
                   Image
                 </th>
                 <th className="uppercase underline text-lg text-primary font-bold  text-left">
-                  delete
+                  Out of stock
                 </th>
               </tr>
             </thead>

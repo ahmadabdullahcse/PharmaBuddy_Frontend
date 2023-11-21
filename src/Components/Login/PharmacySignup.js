@@ -74,6 +74,7 @@ const PharmacySignup = () => {
             role: "pharmacySignup",
             img: imgData.data.url,
             email: data.email,
+            location: data.location,
             password: data.password,
           };
           const user = {
@@ -82,6 +83,7 @@ const PharmacySignup = () => {
             role: "pharmacySignup",
             img: imgData.data.url,
             password: data.password,
+            location: data.location,
           };
           console.log(pharmacySignup);
           console.log(user);
@@ -158,7 +160,6 @@ const PharmacySignup = () => {
                       )}
                     </label>
                   </div>
-
                   {/* email field */}
                   <div className="form-control w-full">
                     <label className="label">
@@ -200,6 +201,33 @@ const PharmacySignup = () => {
                       {errors.email?.type === "pattern" && (
                         <span className="text-red-500 text-xs mt-1">
                           {errors.email.message}
+                        </span>
+                      )}
+                    </label>
+                  </div>
+                  {/* location */}
+                  <div className="form-control w-full">
+                    <label className="label">
+                      <span className="label-text text-primary font-bold text-md">
+                        Location
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Your location"
+                      name="location"
+                      className="input input-sm input-bordered w-full"
+                      {...register("location", {
+                        required: {
+                          value: true,
+                          message: "Location is required",
+                        },
+                      })}
+                    />
+                    <label>
+                      {errors.location?.type === "required" && (
+                        <span className="text-red-500 text-xs mt-1">
+                          {errors.location.message}
                         </span>
                       )}
                     </label>

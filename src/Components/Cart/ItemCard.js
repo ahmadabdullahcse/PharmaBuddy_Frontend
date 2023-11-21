@@ -22,6 +22,7 @@ const ItemCard = ({ _id, images, title, price, qty }) => {
       }
     );
   };
+  console.log(_id);
   return (
     <div className="flex gap-2 shadow-md rounded-lg h-20 p-4 mb-5 bg-accent border-secondary border-2">
       <MdDelete

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PharmacyIndividualCard from "./PharmacyIndividualCard";
+import Cart from "../Cart/Cart";
 
 const PharmacyMedicineDetails = ({ email }) => {
   const { pharmacyEmail } = useParams();
   const newEmail = email ? email : pharmacyEmail;
   const [medicines, setMedicines] = useState([]);
   const [filteredMedicine, setFilteredMedicine] = useState([]);
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:5000/addMedicine")
@@ -31,43 +34,46 @@ const PharmacyMedicineDetails = ({ email }) => {
 
   console.log(filteredMedicine);
 
+  const handleSearchByPrice = () => {
+    const filteredByPrice = medicines.filter((medicine) => {
+      const priceInRange =
+        (!minPrice || medicine.price >= parseFloat(minPrice)) &&
+        (!maxPrice || medicine.price <= parseFloat(maxPrice));
+      return priceInRange;
+    });
+    setFilteredMedicine(filteredByPrice);
+  };
+
   return (
     <div className="container mx-auto my-8 p-4">
       <h1 className="text-2xl font-bold text-center text-primary mb-4">
         Medicines added by this Pharmacy
       </h1>
-      {/* {filteredMedicine.length > 0 && pharmacyEmail && (
-        <table className="table-auto mx-auto w-full">
-          <thead>
-            <tr>
-              <th className="border px-4 py-2">Title</th>
-              {pharmacyEmail && (
-                <>
-                  <th className="border px-4 py-2">Description</th>
-                  <th className="border px-4 py-2">Category</th>
-                  <th className="border px-4 py-2">Price</th>
-                  <th className="border px-4 py-2">Quantity</th>
-                </>
-              )}
-            </tr>
-          </thead>
-          <tbody>
-            {filteredMedicine.map((medicine) => (
-              <tr key={medicine._id}>
-                <td className="border px-4 py-2">{medicine.title}</td>
-                {pharmacyEmail && (
-                  <>
-                    <td className="border px-4 py-2">{medicine.description}</td>
-                    <td className="border px-4 py-2">{medicine.category}</td>
-                    <td className="border px-4 py-2">{medicine.price}</td>
-                    <td className="border px-4 py-2">{medicine.quantity}</td>
-                  </>
-                )}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )} */}
+
+      {/* Price range search input fields */}
+      <div className="mb-4 flex items-center justify-center">
+        <label className="font-extrabold mr-2">Min Price:</label>
+        <input
+          type="number"
+          value={minPrice}
+          onChange={(e) => setMinPrice(e.target.value)}
+          className="p-2 border border-gray-400 rounded-lg outline-none mr-2 text-sm"
+        />
+        <label className="font-extrabold mr-2">Max Price:</label>
+        <input
+          type="number"
+          value={maxPrice}
+          onChange={(e) => setMaxPrice(e.target.value)}
+          className="p-2 border border-gray-400 rounded-lg outline-none text-sm"
+        />
+        <button
+          onClick={handleSearchByPrice}
+          className="p-2 bg-primary text-white rounded-md ml-2"
+        >
+          Search
+        </button>
+      </div>
+
       <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-5 p-11">
         {filteredMedicine.map((product) => (
           <PharmacyIndividualCard
@@ -76,6 +82,7 @@ const PharmacyMedicineDetails = ({ email }) => {
           ></PharmacyIndividualCard>
         ))}
       </div>
+      <Cart />
     </div>
   );
 };

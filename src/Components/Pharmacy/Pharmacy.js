@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PharmacyCard from "./PharmacyCard";
 import bro from "../../images/Questions-bro.png";
+import Cart from "../Cart/Cart";
 
 const Pharmacy = () => {
   const [products, setProducts] = useState([]);
@@ -33,6 +34,7 @@ const Pharmacy = () => {
           ))}
         </div>
       </div>
+      
     </div>
   );
 };

@@ -75,6 +75,7 @@ const Signup = () => {
             email: data.email,
             contact: data.contact,
             address: data.address,
+            location: data.location,
             password: data.password,
           };
           const user = {
@@ -108,7 +109,7 @@ const Signup = () => {
           })
             .then((res) => res.json())
             .then((result) => {
-              toast.success(`${data.name} welcome to Maisha's WORLD`);
+              // toast.success(`${data.name} welcome to Maisha's WORLD`);
             });
         }
       });
@@ -295,6 +296,33 @@ const Signup = () => {
                       {errors.address?.type === "required" && (
                         <span className="text-red-500 text-xs mt-1">
                           {errors.address.message}
+                        </span>
+                      )}
+                    </label>
+                  </div>{" "}
+                  {/* location */}
+                  <div className="form-control w-full">
+                    <label className="label">
+                      <span className="label-text text-primary font-bold text-md">
+                        Location
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Your location"
+                      name="location"
+                      className="input input-sm input-bordered w-full"
+                      {...register("location", {
+                        required: {
+                          value: true,
+                          message: "Location is required",
+                        },
+                      })}
+                    />
+                    <label>
+                      {errors.location?.type === "required" && (
+                        <span className="text-red-500 text-xs mt-1">
+                          {errors.location.message}
                         </span>
                       )}
                     </label>

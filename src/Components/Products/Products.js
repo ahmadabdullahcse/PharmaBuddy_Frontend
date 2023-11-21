@@ -11,6 +11,8 @@ const Products = () => {
   const [details, setDetails] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8); // Number of items to display per page
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
   const category = useSelector((state) => state.category.category);
   const search = useSelector((state) => state.search.search);
 
@@ -48,31 +50,54 @@ const Products = () => {
         <br /> through our diverse medicine categories
       </h1>
 
-      <div className="mb-4 mr-20 text-right">
+      <div className="mb-4 mt-7 mr-20 text-center flex items-center justify-end">
         <label className="font-extrabold mr-2">Items per Page:</label>
         <select
           value={itemsPerPage}
           onChange={handleItemsPerPageChange}
-          className="p-2 border border-gray-400 rounded-lg outline-none"
+          className="p-2 border border-gray-400 rounded-lg outline-none mr-4"
         >
           <option value={20}>20</option>
           <option value={30}>30</option>
           <option value={60}>60</option>
         </select>
+
+        {/* Price range search input fields */}
+        <div>
+          <label className="font-extrabold mr-2">Min Price:</label>
+          <input
+            type="number"
+            value={minPrice}
+            onChange={(e) => setMinPrice(e.target.value)}
+            className="p-2 border border-gray-400 rounded-lg outline-none mr-2 text-sm"
+          />
+        </div>
+        <div>
+          <label className="font-extrabold mr-2">Max Price:</label>
+          <input
+            type="number"
+            value={maxPrice}
+            onChange={(e) => setMaxPrice(e.target.value)}
+            className="p-2 border border-gray-400 rounded-lg outline-none text-sm"
+          />
+        </div>
       </div>
+
       <CategoryMenu />
 
       <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-5 p-11">
         {currentProducts
           .filter((product) => {
-            if (category === "All") {
-              return product.title.toLowerCase().includes(search.toLowerCase());
-            } else {
-              return (
-                category === product.category &&
-                product.title.toLowerCase().includes(search.toLowerCase())
-              );
-            }
+            const titleMatches = product.title
+              .toLowerCase()
+              .includes(search.toLowerCase());
+            const categoryMatches =
+              category === "All" || category === product.category;
+            const priceInRange =
+              (!minPrice || product.price >= parseFloat(minPrice)) &&
+              (!maxPrice || product.price <= parseFloat(maxPrice));
+
+            return titleMatches && categoryMatches && priceInRange;
           })
           .map((product) => (
             <ProductCard

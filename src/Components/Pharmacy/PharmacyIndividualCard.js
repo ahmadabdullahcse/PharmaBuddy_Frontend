@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/Slices/CartSlice";
 import { toast } from "react-toastify";
+import Cart from "../Cart/Cart";
 
 const PharmacyIndividualCard = ({ product }) => {
   const { _id, img, title, price, description } = product;
@@ -20,7 +21,7 @@ const PharmacyIndividualCard = ({ product }) => {
       position: toast.POSITION.TOP_CENTER,
     });
   };
-  
+
   const handleKnowMoreClick = () => {
     if (!productDetail.includes(product)) {
       setProductDetail([...productDetail, product]);
