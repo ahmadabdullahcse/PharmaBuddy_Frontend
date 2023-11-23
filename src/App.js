@@ -30,6 +30,7 @@ import AddMedicine from "./Components/PharmacyDashboard/AddMedicine";
 import MedicineList from "./Components/PharmacyDashboard/MedicineList";
 import Pharmacy from "./Components/Pharmacy/Pharmacy";
 import PharmacyMedicineDetails from "./Components/Pharmacy/PharmacyMedicineDetails";
+import OrderHistory from "./Components/Order/OrderHistory";
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/pharmacySignup" element={<PharmacySignup />} />
+        <Route path="/OrderHistory" element={<OrderHistory />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <ToastContainer />

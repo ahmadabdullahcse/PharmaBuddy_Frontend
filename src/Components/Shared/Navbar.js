@@ -16,6 +16,9 @@ const Navbar = () => {
     signOut(auth);
     navigate("/");
   };
+  const orderHistory = () => {
+    navigate("/OrderHistory");
+  };
   const userRole = localStorage.getItem("userRole");
 
   return (
@@ -218,12 +221,20 @@ const Navbar = () => {
           </li>
           <li>
             {user ? (
-              <button
-                onClick={logout}
-                className="text-base-100 font-bold hover:text-black pr-7"
-              >
-                <div className="indicator">Signout</div>
-              </button>
+              <>
+                <button
+                  onClick={orderHistory}
+                  className="text-base-100 font-bold hover:text-black pr-7"
+                >
+                  <div className="indicator">Order History</div>
+                </button>
+                <button
+                  onClick={logout}
+                  className="text-base-100 font-bold hover:text-black pr-7"
+                >
+                  <div className="indicator">Signout</div>
+                </button>
+              </>
             ) : (
               <Link to="/login">
                 <button className="text-base-100 font-bold hover:text-black pr-7">

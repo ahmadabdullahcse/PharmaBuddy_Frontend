@@ -19,27 +19,74 @@ const Order = () => {
   const [loggedUser, setLoggedUser] = useState([]);
 
   useEffect(() => {
-    if (user) {
-      fetch(`/allUser.json?email=${user.email}`)
-        .then((res) => res.json())
-        .then((data) => {
+    const fetchUser = async () => {
+      try {
+        if (user) {
+          const response = await fetch(`http://localhost:5000/allUsers`);
+          if (!response.ok) {
+            throw new Error("Failed to fetch user data");
+          }
+          const data = await response.json();
           if (data.length > 0) {
             const matchingUser = data.find(
               (userData) => userData.email === user.email
             );
+            // console.log(matchingUser,"shohan");
             if (matchingUser) {
               setLoggedUser(matchingUser);
             }
           }
-        });
-    }
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error.message);
+      }
+    };
+
+    fetchUser();
   }, [user]);
-  console.log(loggedUser);
+  // console.log(loggedUser, "shovo", selectedItems);
   useEffect(() => {}, [selectedItems]);
 
-  const placeOrder = () => {
-    openModal();
+  const postOrder = async (e) => {
+    // e.preventDefault();
+    // console.log(loggedUser, "shovo", selectedItems);
+    const orderData = selectedItems.map((product) => ({
+      productId: product._id,
+      qty: product.qty,
+    }));
+    // console.log(orderData);
+    try {
+      const order = {
+        email: loggedUser.email, // replace with the actual user email
+        products: orderData,
+      };
+
+      const response = await fetch("http://localhost:5000/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        openModal();
+        // alert("Order created successfully:");
+      } else {
+        const errorData = await response.json();
+        alert("Failed to create order:", errorData.error);
+      }
+    } catch (error) {
+      alert("Error:", error.message);
+    }
   };
+
+  // postOrder();
+
+  // const placeOrder = () => {
+
+  // };
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -54,6 +101,7 @@ const Order = () => {
     <div>
       <div className="lg:grid grid-cols-2">
         <div>
+          {console.log(loggedUser, "shovo")}
           <h1
             style={{ fontFamily: "rockwell" }}
             className="text-4xl font-bold text-center text-primary py-20"
@@ -95,7 +143,7 @@ const Order = () => {
                   >
                     confirm Order
                   </h1>
-                  <form onSubmit={handleSubmit(placeOrder)}>
+                  <form onSubmit={handleSubmit(postOrder)}>
                     {/* email field */}
                     <div className="form-control w-full">
                       <label className="label">
@@ -124,6 +172,7 @@ const Order = () => {
                         required
                         placeholder="Your Contact number"
                         name="contact"
+                        value={loggedUser?.customerDetails?.contact}
                         className="input input-sm input-bordered w-full "
                       />
                     </div>
@@ -136,7 +185,7 @@ const Order = () => {
                       </label>
                       <input
                         type="text"
-                        value={loggedUser?.address}
+                        value={loggedUser?.customerDetails?.address}
                         placeholder="Your address"
                         name="address"
                         className="input input-md input-bordered w-full"
@@ -168,6 +217,7 @@ const Order = () => {
                         className="btn btn-sm text-xs w-1/2 border-secondary text-accent font-bold bg-primary"
                         value="PLACE ORDER"
                         type="submit"
+                        // onClick={postOrder}
                       />
                     </div>
                   </form>
