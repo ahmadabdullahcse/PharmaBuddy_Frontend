@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import frwrd from "../../images/banner/forward.png";
-import rewrd from "../../images/banner/rewind.png";
-import ban1 from "../../images/banner/purchase-order.png";
 import ban2 from "../../images/banner/add.png";
+import frwrd from "../../images/banner/forward.png";
 import ban3 from "../../images/banner/reviews.png";
+import rewrd from "../../images/banner/rewind.png";
 
 const DashboardPg = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -66,10 +65,7 @@ const DashboardPg = () => {
               className="text-primary mx-8 text-lg mb-6 font-bold hover:text-black "
               to="/customerDashboard/booking"
             >
-              <span className="flex gap-4">
-                <img className="w-6" src={ban1} alt="" />
-                Booking History
-              </span>
+             
             </Link>
             <Link
               className="text-primary mx-8 text-lg mb-6 font-bold hover:text-black "

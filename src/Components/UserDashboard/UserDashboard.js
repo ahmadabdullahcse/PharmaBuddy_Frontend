@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../firebase.init";
 import { ToastContainer, toast } from "react-toastify";
+import auth from "../../firebase.init";
 
 const UserDashboard = () => {
   const [user] = useAuthState(auth);
@@ -98,10 +98,12 @@ const UserDashboard = () => {
           )}
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+      {/* grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 */}
+      <div className="mt-4 flex justify-center items-center">
         <div className="bg-white shadow-lg p-6 rounded-lg">
           <h3 className="text-lg font-bold text-primary">User Profile</h3>
           <div className="flex items-center mt-4">
+            {console.log(loggedUser)}
             <img
               src={loggedUser?.img}
               alt={loggedUser?.name}
@@ -116,7 +118,7 @@ const UserDashboard = () => {
           </div>
         </div>
 
-        <div className="bg-white shadow-lg p-6 rounded-lg">
+        {/* <div className="bg-white shadow-lg p-6 rounded-lg">
           <h3 className="text-lg font-bold text-primary">Order Summary</h3>
           {loggedUser?.orders?.map((order, index) => (
             <div key={index} className="mt-4">
@@ -133,12 +135,12 @@ const UserDashboard = () => {
               </p>
             </div>
           ))}
-        </div>
+        </div> */}
 
-        <div className="bg-white shadow-lg p-6 rounded-lg">
+        {/* <div className="bg-white shadow-lg p-6 rounded-lg">
           <h3 className="text-lg font-bold text-primary">Order Status</h3>
           <p className="text-primary mt-4">Status: {loggedUser?.status}</p>
-        </div>
+        </div> */}
       </div>
       {isEditing && (
         <div className="lg:max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6 mt-4">
