@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import Loading from "../Shared/Loading";
-import auth from "../../firebase.init";
-import eye from "../../images/eye-svgrepo-com.svg";
-import eyeClose from "../../images/eye-close-svgrepo-com.svg";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import auth from "../../firebase.init";
 import login from "../../images/banner/login.jpg";
+import eyeClose from "../../images/eye-close-svgrepo-com.svg";
+import eye from "../../images/eye-svgrepo-com.svg";
+import Loading from "../Shared/Loading";
 
 const Login = () => {
   const {
@@ -28,7 +28,7 @@ const Login = () => {
     setPasswordVisible(!passwordVisible);
   };
   useEffect(() => {
-    fetch("http://localhost:5000/user")
+    fetch("https://pharmabuddy.onrender.com/user")
       .then((res) => res.json())
       .then((data) => {
         setLoggedUser(data);

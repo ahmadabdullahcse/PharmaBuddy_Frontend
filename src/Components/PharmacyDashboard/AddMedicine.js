@@ -1,8 +1,8 @@
 import React from "react";
-import { useForm } from "react-hook-form";
-import image from "../../images/medicine-bro.png";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
+import image from "../../images/medicine-bro.png";
 
 const AddMedicine = () => {
   const {
@@ -47,7 +47,7 @@ const AddMedicine = () => {
 
         // Save medicine information to the database
         const addMedicineResponse = await fetch(
-          "http://localhost:5000/addMedicine",
+          "https://pharmabuddy.onrender.com/addMedicine",
           {
             method: "POST",
             headers: {

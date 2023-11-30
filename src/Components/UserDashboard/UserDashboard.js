@@ -12,7 +12,7 @@ const UserDashboard = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/customer?email=${user.email}`)
+      fetch(`https://pharmabuddy.onrender.com/customer?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.length > 0) {
@@ -37,7 +37,7 @@ const UserDashboard = () => {
       }
     });
 
-    fetch(`http://localhost:5000/updateUser/${loggedUser._id}`, {
+    fetch(`https://pharmabuddy.onrender.com/updateUser/${loggedUser._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

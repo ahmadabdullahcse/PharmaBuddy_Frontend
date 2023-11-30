@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import ReactModal from "react-modal";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const Order = () => {
@@ -22,7 +22,7 @@ const Order = () => {
     const fetchUser = async () => {
       try {
         if (user) {
-          const response = await fetch(`http://localhost:5000/allUsers`);
+          const response = await fetch(`https://pharmabuddy.onrender.com/allUsers`);
           if (!response.ok) {
             throw new Error("Failed to fetch user data");
           }
@@ -61,7 +61,7 @@ const Order = () => {
         products: orderData,
       };
 
-      const response = await fetch("http://localhost:5000/order", {
+      const response = await fetch("https://pharmabuddy.onrender.com/order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

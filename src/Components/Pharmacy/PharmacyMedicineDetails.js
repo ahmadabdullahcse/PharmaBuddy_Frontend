@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import PharmacyIndividualCard from "./PharmacyIndividualCard";
 import Cart from "../Cart/Cart";
+import PharmacyIndividualCard from "./PharmacyIndividualCard";
 
 const PharmacyMedicineDetails = ({ email }) => {
   const { pharmacyEmail } = useParams();
@@ -12,7 +12,7 @@ const PharmacyMedicineDetails = ({ email }) => {
   const [maxPrice, setMaxPrice] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/addMedicine")
+    fetch("https://pharmabuddy.onrender.com/addMedicine")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

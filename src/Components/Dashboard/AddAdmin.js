@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+import {
+    useCreateUserWithEmailAndPassword,
+    useUpdateProfile,
+} from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useForm } from "react-hook-form";
-import {
-  useCreateUserWithEmailAndPassword,
-  useUpdateProfile,
-} from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
@@ -25,7 +25,7 @@ const AddAdmin = () => {
   const [admins, setAdmins] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/admin")
+    fetch("https://pharmabuddy.onrender.com/admin")
       .then((res) => res.json())
       .then((data) => {
         setAdmins(data);
@@ -78,7 +78,7 @@ const AddAdmin = () => {
             password: data.password,
           };
           // save admin information to the database
-          fetch("http://localhost:5000/admin", {
+          fetch("https://pharmabuddy.onrender.com/admin", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -89,7 +89,7 @@ const AddAdmin = () => {
             .then((result) => {
               toast.success(`${data.name} added as ADMIN`);
             });
-          fetch("http://localhost:5000/user", {
+          fetch("https://pharmabuddy.onrender.com/user", {
             method: "POST",
             headers: {
               "content-type": "application/json",

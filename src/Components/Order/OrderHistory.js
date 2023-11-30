@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import ReactModal from "react-modal";
 import auth from "../../firebase.init";
 
 function OrderHistory() {
@@ -13,7 +10,7 @@ function OrderHistory() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/order/${email}`);
+        const response = await fetch(`https://pharmabuddy.onrender.com/order/${email}`);
         if (!response.ok) {
           throw new Error("Failed to fetch order history");
         }

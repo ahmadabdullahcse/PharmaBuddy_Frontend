@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
-import ScrollToTop from "../Home/ScrollToTop";
+import { useSelector } from "react-redux";
 import Cart from "../Cart/Cart";
 import CategoryMenu from "../Cart/CategoryMenu";
-import { useSelector } from "react-redux";
+import ProductCard from "./ProductCard";
 import ProductDetailPage from "./ProductDetailPage";
 
 const Products = () => {
@@ -17,7 +16,7 @@ const Products = () => {
   const search = useSelector((state) => state.search.search);
 
   useEffect(() => {
-    fetch("http://localhost:5000/medicine")
+    fetch("https://pharmabuddy.onrender.com/medicine")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

@@ -8,7 +8,7 @@ const Items = () => {
   const itemsPerPage = 10;
 
   useEffect(() => {
-    fetch("http://localhost:5000/medicine")
+    fetch("https://pharmabuddy.onrender.com/medicine")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

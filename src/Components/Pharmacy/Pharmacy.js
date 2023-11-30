@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import PharmacyCard from "./PharmacyCard";
 import bro from "../../images/Questions-bro.png";
-import Cart from "../Cart/Cart";
+import PharmacyCard from "./PharmacyCard";
 
 const Pharmacy = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/pharmacySignup")
+    fetch("https://pharmabuddy.onrender.com/pharmacySignup")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

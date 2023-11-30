@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import {
-  useCreateUserWithEmailAndPassword,
-  useUpdateProfile,
+    useCreateUserWithEmailAndPassword,
+    useUpdateProfile,
 } from "react-firebase-hooks/auth";
-import auth from "../../firebase.init";
-import Loading from "../Shared/Loading";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import auth from "../../firebase.init";
 import login from "../../images/banner/login.jpg";
+import Loading from "../Shared/Loading";
 
 const Signup = () => {
   const {
@@ -89,7 +89,7 @@ const Signup = () => {
           console.log(customer);
           console.log(user);
 
-          fetch("http://localhost:5000/customer", {
+          fetch("https://pharmabuddy.onrender.com/customer", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -100,7 +100,7 @@ const Signup = () => {
             .then((result) => {
               toast.success(`${data.name} thanks for your registration`);
             });
-          fetch("http://localhost:5000/user", {
+          fetch("https://pharmabuddy.onrender.com/user", {
             method: "POST",
             headers: {
               "content-type": "application/json",

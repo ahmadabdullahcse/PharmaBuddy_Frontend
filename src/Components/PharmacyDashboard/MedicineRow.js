@@ -15,7 +15,7 @@ const MedicineRow = ({ product, index }) => {
       !isOutOfStock &&
       window.confirm("Are you sure you want to delete this booking?")
     ) {
-      fetch(`http://localhost:5000/addMedicine/${product._id}`, {
+      fetch(`https://pharmabuddy.onrender.com/addMedicine/${product._id}`, {
         method: "DELETE",
       })
         .then((response) => {

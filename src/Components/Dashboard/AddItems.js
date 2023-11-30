@@ -54,7 +54,7 @@ const AddItems = () => {
         };
 
         // Save medicine information to the database
-        const response = await fetch("http://localhost:5000/medicine", {
+        const response = await fetch("https://pharmabuddy.onrender.com/medicine", {
           method: "POST",
           headers: {
             "content-type": "application/json",

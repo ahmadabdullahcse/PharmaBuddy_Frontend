@@ -20,7 +20,7 @@ const Feedback = () => {
       };
 
       // Send feedback data to the server
-      fetch("http://localhost:5000/feedback", {
+      fetch("https://pharmabuddy.onrender.com/feedback", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

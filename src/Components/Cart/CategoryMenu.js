@@ -7,7 +7,7 @@ const CategoryMenu = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("http://localhost:5000/medicine")
+    fetch("https://pharmabuddy.onrender.com/medicine")
       .then((res) => res.json())
       .then((data) => {
         const uniqueCategories = [
