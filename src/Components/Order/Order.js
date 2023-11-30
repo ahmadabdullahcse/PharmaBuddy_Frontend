@@ -116,7 +116,7 @@ const Order = () => {
               >
                 <div className="w-1/2">
                   <img
-                    src={item.images}
+                    src={item.img}
                     alt={item.title}
                     className="w-20 h-28 border-2 border-secondary"
                   />

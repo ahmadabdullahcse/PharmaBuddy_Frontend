@@ -7,7 +7,7 @@ import auth from "../../firebase.init";
 
 function OrderHistory() {
   const [user] = useAuthState(auth);
-  const email = user.email;
+  const email = user?.email;
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -24,12 +24,12 @@ function OrderHistory() {
       }
     };
     fetchOrders();
-  }, []);
+  }, [email]);
 
   const handleReorder = (order) => {
     console.log("Reordering:", order);
   };
-
+console.log(orders)
   return (
     <div className="container mx-auto p-4">
       <h2 className="text-3xl font-bold mb-4 text-center py-4">
@@ -54,19 +54,25 @@ function OrderHistory() {
                       key={product._id}
                       className="flex justify-center items-center border py-2"
                     >
-                      <img
-                        src={product.productDetails.img}
-                        alt={product.productDetails.title}
-                        className="w-16 mr-2"
-                      />
+                      {product.productDetails && product.productDetails.img && (
+                        <img
+                          src={product.productDetails.img}
+                          alt={product.productDetails.title}
+                          className="w-16 mr-2"
+                        />
+                      )}
                       <div>
-                        <p className="text-lg font-bold">
-                          {product.productDetails.title}
-                        </p>
-                        <p>
-                          Price: ${product.productDetails.price} (Qty:{" "}
-                          {product.qty})
-                        </p>
+                        {product.productDetails && (
+                          <p className="text-lg font-bold">
+                            {product.productDetails.title}
+                          </p>
+                        )}
+                        {product.productDetails && (
+                          <p>
+                            Price: ${product.productDetails.price} (Qty:{" "}
+                            {product.qty})
+                          </p>
+                        )}
                       </div>
                     </li>
                   ))}
