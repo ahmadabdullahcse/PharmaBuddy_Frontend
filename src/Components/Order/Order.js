@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import ReactModal from "react-modal";
@@ -22,7 +22,7 @@ const Order = () => {
     const fetchUser = async () => {
       try {
         if (user) {
-          const response = await fetch(`https://pharmabuddy.onrender.com/allUsers`);
+          const response = await fetch(`${process.env.REACT_APP_API_URL}/allUsers`);
           if (!response.ok) {
             throw new Error("Failed to fetch user data");
           }
@@ -61,7 +61,7 @@ const Order = () => {
         products: orderData,
       };
 
-      const response = await fetch("https://pharmabuddy.onrender.com/order", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/order`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

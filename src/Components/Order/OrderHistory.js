@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 
@@ -10,7 +10,7 @@ function OrderHistory() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch(`https://pharmabuddy.onrender.com/order/${email}`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/order/${email}`);
         if (!response.ok) {
           throw new Error("Failed to fetch order history");
         }

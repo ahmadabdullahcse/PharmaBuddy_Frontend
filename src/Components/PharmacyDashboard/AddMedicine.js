@@ -47,7 +47,7 @@ const AddMedicine = () => {
 
         // Save medicine information to the database
         const addMedicineResponse = await fetch(
-          "https://pharmabuddy.onrender.com/addMedicine",
+          `${process.env.REACT_APP_API_URL}/addMedicine`,
           {
             method: "POST",
             headers: {

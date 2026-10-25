@@ -25,7 +25,7 @@ const AddAdmin = () => {
   const [admins, setAdmins] = useState([]);
 
   useEffect(() => {
-    fetch("https://pharmabuddy.onrender.com/admin")
+    fetch(`${process.env.REACT_APP_API_URL}/admin`)
       .then((res) => res.json())
       .then((data) => {
         setAdmins(data);
@@ -78,7 +78,7 @@ const AddAdmin = () => {
             password: data.password,
           };
           // save admin information to the database
-          fetch("https://pharmabuddy.onrender.com/admin", {
+          fetch(`${process.env.REACT_APP_API_URL}/admin`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -89,7 +89,7 @@ const AddAdmin = () => {
             .then((result) => {
               toast.success(`${data.name} added as ADMIN`);
             });
-          fetch("https://pharmabuddy.onrender.com/user", {
+          fetch(`${process.env.REACT_APP_API_URL}/user`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

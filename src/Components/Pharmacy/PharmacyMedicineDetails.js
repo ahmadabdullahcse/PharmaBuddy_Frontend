@@ -12,7 +12,7 @@ const PharmacyMedicineDetails = ({ email }) => {
   const [maxPrice, setMaxPrice] = useState("");
 
   useEffect(() => {
-    fetch("https://pharmabuddy.onrender.com/addMedicine")
+    fetch(`${process.env.REACT_APP_API_URL}/addMedicine`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

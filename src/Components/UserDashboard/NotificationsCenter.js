@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 
@@ -13,7 +13,7 @@ const NotificationsCenter = () => {
   const formattedDate = `${year}-${month}-${day}`;
   useEffect(() => {
     if (user) {
-      fetch(`https://pharmabuddy.onrender.com/customer?email=${user.email}`)
+      fetch(`${process.env.REACT_APP_API_URL}/customer?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.length > 0) {

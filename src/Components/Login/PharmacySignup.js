@@ -88,7 +88,7 @@ const PharmacySignup = () => {
           console.log(pharmacySignup);
           console.log(user);
 
-          fetch("https://pharmabuddy.onrender.com/pharmacySignup", {
+          fetch(`${process.env.REACT_APP_API_URL}/pharmacySignup`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -99,7 +99,7 @@ const PharmacySignup = () => {
             .then((result) => {
               toast.success(`${data.name} thanks for your registration`);
             });
-          fetch("https://pharmabuddy.onrender.com/user", {
+          fetch(`${process.env.REACT_APP_API_URL}/user`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -6,7 +6,7 @@ const Pharmacy = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://pharmabuddy.onrender.com/pharmacySignup")
+    fetch(`${process.env.REACT_APP_API_URL}/pharmacySignup`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

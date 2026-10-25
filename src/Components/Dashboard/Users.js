@@ -7,7 +7,7 @@ const Users = () => {
   const [itemsPerPage, setItemsPerPage] = useState(5);
 
   useEffect(() => {
-    fetch("https://pharmabuddy.onrender.com/user")
+    fetch(`${process.env.REACT_APP_API_URL}/user`)
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);

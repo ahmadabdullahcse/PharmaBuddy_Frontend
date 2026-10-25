@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import out_of_stock from "../../images/out-of-stock.png";
 
@@ -15,7 +15,7 @@ const MedicineRow = ({ product, index }) => {
       !isOutOfStock &&
       window.confirm("Are you sure you want to delete this booking?")
     ) {
-      fetch(`https://pharmabuddy.onrender.com/addMedicine/${product._id}`, {
+      fetch(`${process.env.REACT_APP_API_URL}/addMedicine/${product._id}`, {
         method: "DELETE",
       })
         .then((response) => {

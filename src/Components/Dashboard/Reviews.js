@@ -7,7 +7,7 @@ const Reviews = () => {
   const [itemsPerPage, setItemsPerPage] = useState(5);
 
   useEffect(() => {
-    fetch("https://pharmabuddy.onrender.com/feedback")
+    fetch(`${process.env.REACT_APP_API_URL}/feedback`)
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

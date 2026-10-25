@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ToastContainer, toast } from "react-toastify";
 import auth from "../../firebase.init";
@@ -12,7 +12,7 @@ const UserDashboard = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`https://pharmabuddy.onrender.com/customer?email=${user.email}`)
+      fetch(`${process.env.REACT_APP_API_URL}/customer?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.length > 0) {
@@ -37,7 +37,7 @@ const UserDashboard = () => {
       }
     });
 
-    fetch(`https://pharmabuddy.onrender.com/updateUser/${loggedUser._id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/updateUser/${loggedUser._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -20,7 +20,7 @@ const Feedback = () => {
       };
 
       // Send feedback data to the server
-      fetch("https://pharmabuddy.onrender.com/feedback", {
+      fetch(`${process.env.REACT_APP_API_URL}/feedback`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

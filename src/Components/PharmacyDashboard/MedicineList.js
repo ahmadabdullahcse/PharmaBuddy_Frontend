@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import MedicineRow from "./MedicineRow";
@@ -11,7 +11,7 @@ const MedicineList = () => {
   const itemsPerPage = 10;
 
   useEffect(() => {
-    fetch("https://pharmabuddy.onrender.com/addMedicine")
+    fetch(`${process.env.REACT_APP_API_URL}/addMedicine`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -20,7 +20,7 @@ const MedicineList = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`https://pharmabuddy.onrender.com/pharmacySignup?email=${user.email}`)
+      fetch(`${process.env.REACT_APP_API_URL}/pharmacySignup?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.length > 0) {

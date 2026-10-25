@@ -16,7 +16,7 @@ const Products = () => {
   const search = useSelector((state) => state.search.search);
 
   useEffect(() => {
-    fetch("https://pharmabuddy.onrender.com/medicine")
+    fetch(`${process.env.REACT_APP_API_URL}/medicine`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
